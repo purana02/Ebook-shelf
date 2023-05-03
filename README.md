@@ -29,7 +29,9 @@
  - サイト毎の課金額を管理したい時
 
 ## 設計書
-
+ - [ER図](https://drive.google.com/file/d/13u9Ls3HSliAAK2hCDhUxuT3ql-NTdtKJ/view?usp=sharing)
+ - [UIflows会員側](https://drive.google.com/file/d/13u9Ls3HSliAAK2hCDhUxuT3ql-NTdtKJ/view?usp=sharing)
+ - [UIflows管理者側](https://drive.google.com/file/d/1Photp9asorHQ9oJdjrQ5pMjWjwKfGt8p/view?usp=sharing)
 
 ## 開発環境
 - OS：Linux(CentOS)
