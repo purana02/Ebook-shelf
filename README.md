@@ -33,6 +33,7 @@
  - [テーブル定義書](https://docs.google.com/spreadsheets/d/1wG4C1IV5jydZalzVIsU56sgrnXQgxQf4jTD5J-_GxMo/edit?usp=sharing)
  - [UIflows会員側](https://drive.google.com/file/d/1cK1tLoVaolvlCeNQu67KBLDll0ntG9Ux/view?usp=sharing)
  - [UIflows管理者側](https://drive.google.com/file/d/1Photp9asorHQ9oJdjrQ5pMjWjwKfGt8p/view?usp=sharing)
+ - [アプリケーション詳細設計書](https://docs.google.com/spreadsheets/d/1XHzMttie1qDgvtv8ecEZnynYuos4k1QMpJjwrs09vZw/edit?usp=sharing)
 
 ## 開発環境
 - OS：Linux(CentOS)
