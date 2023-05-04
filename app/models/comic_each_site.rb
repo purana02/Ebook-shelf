@@ -1,0 +1,2 @@
+class ComicEachSite < ApplicationRecord
+end
