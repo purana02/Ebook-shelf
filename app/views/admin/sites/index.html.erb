@@ -1,2 +1,39 @@
-<h1>Admin::Sites#index</h1>
-<p>Find me in app/views/admin/sites/index.html.erb</p>
+<div class="container">
+  <div class="row">
+    <h3 class="col-lg-auto bg-light text-center">サイト一覧・追加</h3>
+  </div>
+  <%= render 'layouts/errors', obj: @site %>
+  <div class="row">
+    <div class="col-lg-5">
+      <%= form_with model: @site, url: admin_sites_path, method: :post do |f| %>
+        <div class="form-group row justify-content-center">
+          <label for="site" class="col-lg-3 col-form-label">サイト名</label>
+          <div class="col-lg-auto"><%= f.text_field :name, placeholder: "サイト名" %></div>
+          <%= f.submit '新規登録', class: "btn btn-success" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-5">
+      <table class="table table-hover tabke-inverse">
+        <thead class="thead-light">
+          <tr>
+            <th>サイト名</th>
+            <th></th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @sites.each do |site| %>
+            <tr>
+              <td><%= site.name %></td>
+              <td><%= link_to "編集", edit_admin_site_path(site.id), class: "btn btn-sm btn-success" %></td>
+              <td><%= link_to "削除", admin_site_path(site.id), method: :delete, data: { confirm: '本当に消しますか？' }, class:"btn btn-sm btn-danger" %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
