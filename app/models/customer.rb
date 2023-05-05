@@ -4,9 +4,9 @@ class Customer < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   def self.guest
-    find_or_create_by!(name: 'guestuser' ,email: 'guest@example.com') do |customer|
+    find_or_create_by!(nickname: 'guestuser' ,email: 'guest@example.com') do |customer|
       customer.password = SecureRandom.urlsafe_base64
-      customer.name = "guestuser"
+      customer.nickname = "guestuser"
     end
   end
 end
