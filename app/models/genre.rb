@@ -1,3 +1,3 @@
 class Genre < ApplicationRecord
-  has_many :comics
+  has_many :comics, dependent: :destroy
 end

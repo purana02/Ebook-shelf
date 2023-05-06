@@ -1,0 +1,36 @@
+<%= render 'layouts/errors', obj: comic %>
+<div class="row justify-content-lg-center">
+  <div class="col-lg-8">
+    <%= form_with model: comic, url: comics_path, method: :post do |f| %>
+    <form>
+      <div class="form-group row">
+        <label class="col-sm-4 col-form-label">タイトル</label>
+        <div class="col-sm-8">
+          <%= f.text_field :title, class: "form-control", placeholder: "タイトル" %>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label class="col-sm-4 col-form-label">ジャンル</label>
+        <div class="col-sm-8">
+          <%= f.select :genre_id, options_from_collection_for_select(Genre.all, :id, :name), { include_blank: "--選択してください--" } %>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label class="col-sm-4 col-form-label">閲覧サイト</label>
+        <div class="col-sm-8">
+          <%= f.select :site_id, options_from_collection_for_select(Site.all, :id, :name), { include_blank: "--選択してください--" } %>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label class="col-sm-4 col-form-label">タグ（、（句点）で区切ると複数登録できます）</label>
+        <div class="col-sm-8">
+          <%= f.text_field :name, class: "form-control", placeholder: "、（句点）で区切ると複数登録できます" %>
+        </div>
+      </div>
+      <div class="form-group row justify-content-center">
+        <%= f.submit "新規登録", class: "btn btn-success" %>
+      </div>
+    </form>
+    <% end %>
+  </div>
+ </div>

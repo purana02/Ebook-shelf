@@ -34,14 +34,14 @@ ActiveRecord::Schema.define(version: 2023_05_04_041526) do
 
   create_table "comic_each_sites", force: :cascade do |t|
     t.integer "comic_id", null: false
-    t.integer "site", null: false
+    t.integer "site_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "comics", force: :cascade do |t|
     t.integer "genre_id", null: false
-    t.string "name", null: false
+    t.string "title", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

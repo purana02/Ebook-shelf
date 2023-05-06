@@ -23,6 +23,7 @@ scope module: :public do
     patch "is_deleted" => "customers#is_deleted"
     resources :billings, except: [:show]
     resources :reviews, only: [:index, :show]
+    resources :favorites, only: [:index]
   end
  #漫画関連
   resources :comics, except: [:edit, :update, :destroy] do
@@ -31,7 +32,7 @@ scope module: :public do
       patch "is_reported" => "comments#is_reported"
       resources :comments, only: [:new, :create]
     end
-    resource :favorites, only: [:index, :create, :destroy]
+    resource :favorites, only: [:create, :destroy]
   end
 end
 
