@@ -1,0 +1,18 @@
+<div class="mt-3 mb-2">
+  <table class="table table-borderless table-hover text-center">
+    <thead class="table-active">
+      <tr>
+        <th class="h5 font-weight-bold rounded-pill">サイト一覧</th>
+      </tr>
+    </thead>
+    <% sites.each do |site| %>
+    <tr>
+      <td class="rounded-pill">
+        <%= link_to comics_path(site_id: site.id), class: "text-dark" do %>
+          <%= site.name %>
+        <% end %>
+      </td>
+    </tr>
+    <% end %>
+  </table>
+</div>
