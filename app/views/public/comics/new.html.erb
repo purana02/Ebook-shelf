@@ -6,7 +6,7 @@
     </div>
     <div class="col-md-8 offset-md-1" >
       <h2 class="text-center">コミック新規登録</h2>
-      <%= render 'public/comics/form', comic: @comic %>
+      <%= render 'public/comics/form', {comic: @comic, having_comic: @having_comic } %>
     </div>
   </div>
 </div>

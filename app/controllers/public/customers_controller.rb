@@ -2,7 +2,7 @@ class Public::CustomersController < ApplicationController
   before_action :ensure_guest_user, only: [:edit]
   
   def show
-    @comics = current_customer.having_comics.all
+    @havings = current_customer.having_comics.all
   end
 
   def edit

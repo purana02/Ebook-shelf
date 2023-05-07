@@ -8,11 +8,11 @@
     </tr>
   </thead>
   <tbody>
-    <% comics.each do |comic| %>
+    <% havings.each do |having| %>
     <tr>
-      <td><%= comic.created_at.strftime('%Y/%m/%d') %></td>
-      <td><%= comic.title %></td>
-      <td><%= comic.site.name %></td>
+      <td><%= having.created_at.strftime('%Y/%m/%d') %></td>
+      <td><%= having.comic.title %></td>
+      <td><%= having.site.name %></td>
     </tr>
     <% end %>
   </tbody>

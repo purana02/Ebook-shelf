@@ -25,8 +25,10 @@ scope module: :public do
     resources :reviews, only: [:index, :show]
     resources :favorites, only: [:index]
   end
+ #会員の所持している漫画
+  resources :having_comics, only: [:new, :create]
  #漫画関連
-  resources :comics, except: [:edit, :update, :destroy] do
+  resources :comics, only: [:index, :show, :new, :create] do
     resources :reviews, except: [:index,:show] do
       get "confirm_reported" => "comments#confirm_reported"
       patch "is_reported" => "comments#is_reported"

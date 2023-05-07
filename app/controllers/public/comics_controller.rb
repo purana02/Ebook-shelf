@@ -10,28 +10,33 @@ class Public::ComicsController < ApplicationController
     @sites = Site.all
     @genres = Genre.all
     @comic = Comic.new
+    @having_comic = HavingComic.new
   end
 
   def create
-    @comic = Comic.find_or_initialize_by(title: params[:title])
-    if @comic.new_record?
-      @comic.save
-      input_tags = params[:comic][:name].split(',')
-      @comic.create_tags(input_tags)
+    @having_comic = HavingComic.new(having_params)
+    @comic = Comic.find_or_create_by(comic_params)
+    @having_comic.customer_id = current_customer.id
+    @having_comic.comic_id = @comic.id
+    @having_comic.save!
+    input_tags = params[:comic][:name].split(',')
+    @comic.create_tags(input_tags)
+    if ComicEachSite.where(comic_id: @comic.id, site_id: @having_comic.site_id).exists?
+      flash[:notice] = "登録が完了しました"
+      redirect_to customer_path
     else
-      input_tags = params[:comic][:name].split(',')
-      @comic.update_tags(input_tags)
+      each_site = ComicEachSite.new
+      each_site.site_id = @having_comic.site_id
+      each_site.comic_id = @having_comic.comic_id
+      if each_site.save
+        flash[:notice] = "登録が完了しました"
+        redirect_to customer_path
+      else
+        @genres = Genre.all
+        @sites = Site.all
+        render 'new'
+      end
     end
-    comic_each_site = ComicEachSite.new
-    comic_each_site.comic_id = @comic.id
-    comic_each_site.site_id = site_params.to_i
-    @comic_each_site.save
-    having_comic = HavingComic.new
-    having_comic.comic_id = @comic.id
-    having_comic.customer_id = current_customer.id
-    having_comic.site_id = params[:comic][:site_id].to_i
-    flash[:notice] = "登録が完了しました"
-    redirect_to customer_path
   end
 
   def edit
@@ -41,8 +46,7 @@ class Public::ComicsController < ApplicationController
   def comic_params
     params.require(:comic).permit(:title, :genre_id)
   end
-
-  def site_params
-    params.require(:comic).permit(:site_id)
+  def having_params
+    params.require(:having_comic).permit(:site_id)
   end
 end

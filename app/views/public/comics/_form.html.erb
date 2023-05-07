@@ -16,10 +16,12 @@
         </div>
       </div>
       <div class="form-group row">
-        <label class="col-sm-4 col-form-label">閲覧サイト</label>
-        <div class="col-sm-8">
-          <%= f.select :site_id, options_from_collection_for_select(Site.all, :id, :name), { include_blank: "--選択してください--" } %>
-        </div>
+        <%= fields_for(having_comic) do |a| %>
+          <label class="col-sm-4 col-form-label">閲覧サイト</label>
+          <div class="col-sm-8">
+            <%= a.select :site_id, options_from_collection_for_select(Site.all, :id, :name), { include_blank: "--選択してください--" } %>
+          </div>
+        <% end %>
       </div>
       <div class="form-group row">
         <label class="col-sm-4 col-form-label">タグ（、（句点）で区切ると複数登録できます）</label>
