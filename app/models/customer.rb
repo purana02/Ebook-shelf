@@ -4,6 +4,7 @@ class Customer < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   has_many :having_comics, dependent: :destroy
+  has_many :reviews, dependent: :destroy
   
   def self.guest
     find_or_create_by!(nickname: 'guestuser' ,email: 'guest@example.com') do |customer|

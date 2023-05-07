@@ -4,6 +4,7 @@ class Comic < ApplicationRecord
   has_many :sites, through: :comic_each_sites
   has_many :taggings, dependent: :destroy
   has_many :tags, through: :taggings
+  has_many :reviews, dependent: :destroy
   belongs_to :genre
 
   def create_tags(input_tags)

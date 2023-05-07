@@ -1,0 +1,55 @@
+<%= render 'layouts/errors', obj: review %>
+<div class="row justify-content-lg-center">
+  <div class="col-lg-8">
+    <h4>タイトル : <%= comic.title %></h4>
+    <%= form_with model:[comic, review], url: comic_reviews_path(comic), method: :post do |f| %>
+    <form>
+      <div class="form-group row">
+        <label class="col-sm-4 col-form-label">投稿タイトル</label>
+        <div class="col-sm-8">
+          <%= f.text_field :title, class: "form-control", placeholder: "タイトル" %>
+        </div>
+      </div>
+      <div class="form-group row" id="star">
+        <label class="col-sm-4 col-form-label">星（５段階評価）</label>
+        <div class="col-sm-8">
+          <%= f.hidden_field :evaluation, id: :review_star %>
+          <div id="post_raty"></div>
+        </div>
+      </div>
+      <script>
+        $('#post_raty').raty({
+          size: 36,
+          starOff: '<%= asset_path('star-off.png') %>',
+          starOn: '<%= asset_path('star-on.png') %>',
+          scoreName: 'review[evaluation]',
+          half: false,
+        });
+      </script>
+      <div class="form-group row">
+        <label class="col-sm-4 col-form-label">レビュー内容<br>（未入力可）</label>
+        <div class="col-sm-8">
+          <%= f.text_area :body,class: "form-control", placeholder: "感想を入力してください" %>
+        </div>
+      </div>
+      <div class="form-group row">
+        <div class="col-sm-4 col-form-label">ネタバレ</div>
+        <div class="col-5">
+          <%= f.radio_button :exists_spoiler, "true" %>
+          <%= f.label :exists_spoiler_true, "ネタバレあり" %>
+        </div>
+      </div>
+      <div class="form-group row">
+        <div class="col-sm-4 col-form-label"></div>
+        <div class="col-4">
+          <%= f.radio_button :exists_spoiler, "false" %>
+          <%= f.label :exists_spoiler_false, "ネタバレなし" %>
+        </div>
+      </div>
+      <div class="form-group row justify-content-center">
+        <%= f.submit "新規登録", class: "btn btn-success" %>
+      </div>
+    </form>
+    <% end %>
+  </div>
+ </div>
