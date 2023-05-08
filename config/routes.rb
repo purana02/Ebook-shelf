@@ -27,6 +27,8 @@ scope module: :public do
   end
  #会員の所持している漫画
   resources :having_comics, only: [:new, :create]
+ #サイト検索結果画面
+  resources :comic_each_sites, only: [:show]
  #漫画関連
   resources :comics, only: [:index, :show, :new, :create] do
     resources :reviews, except: [:index,:show] do

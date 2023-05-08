@@ -8,7 +8,7 @@
     <% sites.each do |site| %>
     <tr>
       <td class="rounded-pill">
-        <%= link_to comics_path(site_id: site.id), class: "text-dark" do %>
+        <%= link_to comic_each_site_path(site.id), class: "text-dark" do %>
           <%= site.name %>
         <% end %>
       </td>

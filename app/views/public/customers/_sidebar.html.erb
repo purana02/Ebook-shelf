@@ -8,9 +8,11 @@
       </tr>
     </thead>
     <tbody>
+      <% if current_customer.nickname != "guestuser" %>
       <tr>
         <td class="rounded-pill"><%= link_to '会員情報編集', edit_customer_path, class: "text-dark" %></td>
       </tr>
+      <% end %>
       <tr>
         <td class="rounded-pill"><%= link_to 'コミック一覧', customer_path, class: "text-dark" %></td>
       </tr>
