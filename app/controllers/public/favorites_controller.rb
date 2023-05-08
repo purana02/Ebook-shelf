@@ -1,5 +1,6 @@
 class Public::FavoritesController < ApplicationController
   def index
+    @favorites = current_customer.favorites.all
   end
 
   def create
