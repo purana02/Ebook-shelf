@@ -12,7 +12,7 @@ class Public::ReviewsController < ApplicationController
     @review.customer_id = current_customer.id
     @review.comic_id = params[:comic_id]
     if @review.save
-      falsh[:notice] = "レビューを投稿しました"
+      flash[:notice] = "レビューを投稿しました"
       redirect_to comic_path(@comic)
     else
       @genres = Genre.all
