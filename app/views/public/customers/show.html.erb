@@ -1,2 +1,19 @@
-<h1>Public::Customers#show</h1>
-<p>Find me in app/views/public/customers/show.html.erb</p>
+<div class="container px-5 px-sm-0">
+  <div class="row">
+    <div class="col-md-3">
+      <%= render 'sidebar' %>
+    </div>
+    <div class="col-md-8 offset-md-1" >
+      <div class="row">
+        <h2>Comics</h2>
+        <div class="justify-content-end">
+          <%= link_to new_comic_path do %>
+            <i class="fas fa-plus-circle fa-2x" style="color: #4d3233;"></i>
+          <% end %>
+        </div>
+      </div>
+      <!--会員の所持している漫画一覧-->
+      <%= render 'index', havings: @havings %>
+    </div>
+  </div>
+</div>

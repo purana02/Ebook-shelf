@@ -1,2 +1,12 @@
-<h1>Public::Homes#top</h1>
-<p>Find me in app/views/public/homes/top.html.erb</p>
+<div class="container px-5 px-sm-0">
+  <div class="row">
+    <div class="col-md-3">
+      <%= render 'public/genres/sidebar', genres: @genres %>
+      <%= render 'public/sites/sidebar', sites: @sites %>
+    </div>
+    <div class="col-md-8 offset-md-1" >
+      <h2>人気コミックTop5</h2>
+      <h2>レビュー新着順</h2>
+    </div>
+  </div>
+</div>
