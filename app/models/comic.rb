@@ -5,8 +5,10 @@ class Comic < ApplicationRecord
   has_many :taggings, dependent: :destroy
   has_many :tags, through: :taggings
   has_many :reviews, dependent: :destroy
+  has_many :favorites, dependent: :destroy
   belongs_to :genre
 
+#tagの保存
   def create_tags(input_tags)
     input_tags.each do |tag|                     # splitで分けたtagをeach文で取得する
       new_tag = Tag.find_or_create_by(name: tag) # tagモデルに存在していれば、そのtagを使用し、なければ新規登録する
@@ -14,6 +16,7 @@ class Comic < ApplicationRecord
     end
   end
 
+#tag の更新
   def update_tags(input_tags)
     registered_tags = tags.pluck(:name) # すでに紐付けれらているタグを配列化する
     new_tags = input_tags - registered_tags # 追加されたタグ
@@ -22,4 +25,10 @@ class Comic < ApplicationRecord
       tags << new_tag
     end
   end
+
+#お気に入り登録をしているか
+  def favorited_by?(customer)
+    favorites.exists?(customer_id: customer.id)
+  end
+
 end
