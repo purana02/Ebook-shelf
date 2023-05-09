@@ -7,7 +7,7 @@ class Public::FavoritesController < ApplicationController
     comic = Comic.find(params[:comic_id])
     @favorite = current_customer.favorites.new(comic_id: comic.id)
     @favorite.save
-    redeirect_to comic_parh(comic)
+    redirect_to comic_path(comic)
   end
 
   def destroy

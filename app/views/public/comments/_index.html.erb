@@ -1,0 +1,8 @@
+<% review.comments.each do |comment| %>
+  <tr>
+    <td><%= comment.customer.nickname %>さんのコメント</td>
+    <td colspan="4">
+      <%= comment.body %>
+    </td>
+  </tr>
+<% end %>

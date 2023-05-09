@@ -16,6 +16,8 @@ class Public::ComicsController < ApplicationController
     @genres = Genre.all
     @sites = Site.all
     @comic = Comic.find(params[:id])
+    @tags = @comic.tags.all
+    @reviews = @comic.reviews.all
   end
 
   def new
