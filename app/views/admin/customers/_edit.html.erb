@@ -1,0 +1,33 @@
+<%= render 'layouts/errors', obj: customer %>
+<div class="row justify-content-lg-center">
+  <div class="col-lg-8">
+    <%= form_with model: customer, url: admin_customer_path(customer), method: :patch do |f| %>
+    <form>
+      <div class="form-group row">
+        <label class="col-sm-4 col-form-label">ニックネーム</label>
+        <div class="col-sm-8">
+          <%= f.text_field :nickname, class: "form-control" %>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label class="col-sm-4 col-form-label">メールアドレス</label>
+        <div class="col-sm-8">
+          <%= f.email_field :email, class: "form-control" %>
+        </div>
+      </div>
+      <div class="form-group row">
+        <div class="col-sm-4 col-form-label">会員ステータス</div>
+        <div class="col-7">
+          <%= f.radio_button :is_deleted, "false" %>
+          <%= f.label :is_deleted_false, "有効" %>
+          <%= f.radio_button :is_deleted, "true" %>
+          <%= f.label :is_deleted_true, "退会済み" %>
+        </div>
+      </div>
+      <div class="form-group row justify-content-center">
+        <%= f.submit "会員情報編集", class: "btn btn-success" %>
+      </div>
+    </form>
+    <% end %>
+  </div>
+ </div>
