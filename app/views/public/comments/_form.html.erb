@@ -1,0 +1,26 @@
+<%= render 'layouts/errors', obj: comment %>
+<div class="row justify-content-lg-center">
+  <div class="col-lg-8">
+    <h4>タイトル : <%= review.title %></h4>
+    <div class="border border-info p-2 rounded-lg">
+      <p><%= review.body %></p>
+    </div>
+  </div>
+</div>
+<div class="row justify-content-lg-center mt-4">
+  <div class="col-lg-8">
+    <%= form_with model:[review, comment], url: comic_review_comments_path(comic,review), method: :post do |f| %>
+    <form>
+      <div class="form-group row">
+        <label class="col-lg-3 col-form-label">コメント</label>
+        <div class="col-lg-10">
+          <%= f.text_area :body, class: "form-control", placeholder: "コメントを入力してください" %>
+        </div>
+      </div>
+      <div class="form-group row justify-content-center">
+        <%= f.submit "コメント投稿", class: "btn btn-success" %>
+      </div>
+    </form>
+    <% end %>
+  </div>
+</div>

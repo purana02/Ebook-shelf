@@ -5,14 +5,26 @@
       <%= render 'public/sites/sidebar', sites: @sites %>
     </div>
     <div class="col-md-8 offset-md-1" >
-      <h2>コミック詳細 <i class="fas fa-book-open"></i></h2>
+      <h2>コミック詳細</h2>
       <div class="row">
-        <h4 class="mt-2 mr-2">タイトル : <%= @comic.title %></h4>
+        <h4 class="mt-2 mr-2"><strong>タイトル : <%= @comic.title %></strong></h4>
         <%= link_to "レビュー投稿", new_comic_review_path(@comic), class: "col-md-2 btn btn-warning" %>
       </div>
-      <div class="row">
-        <p class="mr-3"><strong>お気に入り：<%= @comic.favorites.count %>件</strong></p>
-        <div><%= render 'public/favorites/favorite-btn', comic: @comic %></div>
+      <div class="row mt-3">
+        <h5 class="mr-3 mt-1">お気に入り登録数：<%= @comic.favorites.count %>件</h5>
+        <div class="ml-3"><%= render 'public/favorites/favorite-btn', comic: @comic %></div>
+      </div>
+      <div class="row mt-4">
+        <div class="col-md-4 offset-md-1" >
+          <%= render 'public/reviews/star', comic: @comic %>
+        </div>
+        <div class="col-md-4 offset-md-1" >
+          <%= render 'public/comics/tags', tags: @tags %>
+        </div>
+      </div>
+      <div class="row mt-2">
+        <h2>みんなの感想</h2>
+        <%= render 'public/reviews/index', reviews: @reviews %>
       </div>
     </div>
   </div>

@@ -1,0 +1,6 @@
+<h6><strong>タグ一覧</strong></h6>
+<div class="d-flex flex-wrap">
+<% @tags.each do |tag| %>
+<p  class="mr-2"><strong><i class="fas fa-tag"></i><%= tag.name %></strong></p>
+<% end %>
+</div>

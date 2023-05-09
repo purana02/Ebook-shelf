@@ -6,6 +6,7 @@ class Customer < ApplicationRecord
   has_many :having_comics, dependent: :destroy
   has_many :reviews, dependent: :destroy
   has_many :favorites, dependent: :destroy
+  has_many :comments, dependent: :destroy
   
   def self.guest
     find_or_create_by!(nickname: 'guestuser' ,email: 'guest@example.com') do |customer|
