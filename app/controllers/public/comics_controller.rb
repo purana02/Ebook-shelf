@@ -17,6 +17,7 @@ class Public::ComicsController < ApplicationController
     @sites = Site.all
     @comic = Comic.find(params[:id])
     @tags = @comic.tags.all
+    @each_sites = @comic.sites.all
     @reviews = @comic.reviews.all
   end
 
