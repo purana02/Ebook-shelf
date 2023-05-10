@@ -32,6 +32,10 @@ scope module: :public do
  #漫画関連
   resources :comics, only: [:index, :show, :new, :create] do
     resources :reviews, except: [:index,:show] do
+      member do
+        get "confirm_reported" => "reviews#confirm_reported"
+        patch "is_reported" => "reviews#is_reported"
+      end
       get "confirm_reported" => "comments#confirm_reported"
       patch "is_reported" => "comments#is_reported"
       resources :comments, only: [:new, :create]

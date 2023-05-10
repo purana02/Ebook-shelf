@@ -11,7 +11,7 @@
           <%= review.body %>
           <div class="float-right">
             <%= link_to "コメントする", new_comic_review_comment_path(review.comic_id, review), class:"btn btn-sm btn-outline-success" %>
-            <%= link_to "通報する", comic_review_confirm_reported_path(review.comic_id, review), class:"btn btn-sm btn-outline-danger"  %>
+            <%= link_to "通報する", confirm_reported_comic_review_path(review.comic_id, review), class:"btn btn-sm btn-outline-danger"  %>
           </div>
         </td>
       </tr>

@@ -21,6 +21,22 @@ class Public::ReviewsController < ApplicationController
     end
   end
 
+  def confirm_reported
+    @comic = Cmic.find(params[:comid_id])
+    @review = Review.find(params[:id])
+  end
+
+  def is_reported
+    @comic = Cmic.find(params[:comid_id])
+    @review = Review.find(params[:id])
+    if @review.update(is_reported: true)
+      flash[:notice] = "通報しました"
+      redirect_to comic_path(@comic)
+    else
+      render 'confirm_reported'
+    end
+  end
+
   def edit
   end
 
