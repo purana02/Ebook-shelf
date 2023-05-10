@@ -1,7 +1,4 @@
 class Admin::ReviewsController < ApplicationController
-  def index
-  end
-
   def show
     @genres = Genre.all
     @sites = Site.all
@@ -19,9 +16,15 @@ class Admin::ReviewsController < ApplicationController
       render 'show'
     end
   end
-  
+
+  def destroy
+    @review = Review.find(params[:id])
+    @review.destroy
+    redirect_to admin_root_path
+  end
+
   private
   def review_params
      params.require(:review).permit(:exists_spoiler, :is_reported, :is_publishing)
-  end  
+  end
 end

@@ -1,0 +1,21 @@
+<% review.comments.each do |comment| %>
+  <tr>
+    <td>
+      <%= link_to admin_comment_path(comment) do %>
+        <%= comment.customer.nickname %>さんのコメント
+      <% end %>
+    </td>
+    <td colspan="4">
+      <%= comment.body %>
+      <% if comment.is_publishing == false %>
+        <div class="float-right">
+          <p class="text-success"><strong>非公開</strong></p>
+        </div>
+      <% elsif comment.is_reported == true %>
+        <div class="float-right">
+          <p class="text-danger"><strong>通報されています</strong></p>
+        </div>
+      <% end %>
+    </td>
+  </tr>
+<% end %>

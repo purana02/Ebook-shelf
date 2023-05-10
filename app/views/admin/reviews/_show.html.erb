@@ -4,6 +4,9 @@
     <div class="row mt-2">
       <div class="col-3">会員ID　</div>
       <div class="col-3"><%= review.customer.id %></div>
+      <div>
+        <%= link_to '投稿を削除する', admin_comic_review_path(comic, review), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-outline-danger"%>
+      </div>
     </div>
     <div class="row mt-2">
       <div class="col-3">タイトル　</div>
@@ -11,7 +14,7 @@
     </div>
     <div class="row mt-2">
       <div class="col-3">投稿内容　</div>
-      <div class="col-3"><%= review.body %></div>
+      <div class="col-9 border border-info"><%= review.body %></div>
     </div>
   </div>
 </div>
@@ -28,7 +31,7 @@
           <%= f.label :exists_spoiler_false, "なし" %>
         </div>
         <div class="col-2">
-          <%= f.submit "更新", class: "btn  btn-sm btn-success" %>
+          <%= f.submit "更新", class: "btn btn-sm btn-success" %>
         </div>
       </div>
     </form>
@@ -48,7 +51,7 @@
           <%= f.label :is_reported_false, "なし" %>
         </div>
         <div class="col-2">
-          <%= f.submit "更新", class: "btn  btn-sm btn-success" %>
+          <%= f.submit "更新", class: "btn btn-sm btn-success" %>
         </div>
       </div>
     </form>
@@ -68,7 +71,7 @@
           <%= f.label :is_publishing_false, "非公開" %>
         </div>
         <div class="col-2">
-          <%= f.submit "更新", class: "btn  btn-sm btn-success" %>
+          <%= f.submit "更新", class: "btn btn-sm btn-success" %>
         </div>
       </div>
     </form>

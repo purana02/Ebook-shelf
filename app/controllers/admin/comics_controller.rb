@@ -13,5 +13,11 @@ class Admin::ComicsController < ApplicationController
   end
 
   def show
+    @genres = Genre.all
+    @sites = Site.all
+    @comic = Comic.find(params[:id])
+    @tags = @comic.tags.all
+    @each_sites = @comic.sites.all
+    @reviews = @comic.reviews.all
   end
 end

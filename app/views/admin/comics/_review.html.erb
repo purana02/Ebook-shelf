@@ -1,0 +1,32 @@
+<table class='table table-hover table-inverse'>
+  <tbody>
+    <% reviews.each do |review| %>
+      <tr>
+        <th>
+          <%= link_to admin_comic_review_path(review.comic_id, review) do %>
+            <%= review.customer.nickname %>さんの投稿
+          <% end %>
+        </th>
+        <td><%= render "public/reviews/starviews", review: review %></td>
+        <td colspan="5"></td>
+      </tr>
+      <tr>
+        <td colspan="5">
+          <%= review.body %>
+          <% if review.is_publishing == false %>
+            <div class="float-right">
+              <p class="text-success"><strong>非公開</strong></p>
+            </div>
+          <% elsif review.is_reported == true %>
+            <div class="float-right">
+              <p class="text-danger"><strong>通報されています</strong></p>
+            </div>
+          <% end %>
+        </td>
+      </tr>
+      <% if review.comments.exists? %>
+        <%= render "admin/comments/index", review: review %>
+      <% end %>
+    <% end %>
+  </tbody>
+</table>

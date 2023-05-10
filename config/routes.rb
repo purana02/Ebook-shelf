@@ -67,6 +67,8 @@ namespace :admin do
   resources :comments, except: [:edit, :new, :create]
  #サイト検索結果画面
   resources :comic_each_sites, only: [:show]
+  resources :reporteds, only: [:index, :update]
+  resources :reported_comments, only: [:update]
 end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
