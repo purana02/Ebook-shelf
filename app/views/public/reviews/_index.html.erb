@@ -1,22 +1,32 @@
 <table class='table table-hover table-inverse'>
   <tbody>
     <% reviews.each do |review| %>
-      <tr>
-        <th><%= review.customer.nickname %>さんの投稿</th>
-        <td><%= render "public/reviews/starviews", review: review %></td>
-        <td colspan="5"></td>
-      </tr>
-      <tr>
-        <td colspan="5">
-          <%= review.body %>
-          <div class="float-right">
-            <%= link_to "コメントする", new_comic_review_comment_path(review.comic_id, review), class:"btn btn-sm btn-outline-success" %>
-            <%= link_to "通報する", confirm_reported_comic_review_path(review.comic_id, review), class:"btn btn-sm btn-outline-danger"  %>
-          </div>
-        </td>
-      </tr>
-      <% if review.comments.exists? %>
-        <%= render "public/comments/index", review: review %>
+      <% if review.is_publishing == true %>
+        <tr>
+          <th><%= review.customer.nickname %>さんの投稿</th>
+          <td><%= render "public/reviews/starviews", review: review %></td>
+          <td colspan="5"></td>
+        </tr>
+        <tr>
+          <td colspan="5">
+            <%= review.body %>
+            <% if review.customer_id != current_customer.id %>
+              <div class="float-right">
+                <%= link_to "コメントする", new_comic_review_comment_path(review.comic_id, review), class:"btn btn-sm btn-outline-success" %>
+                <%= link_to "レビューを報告する", confirm_reported_comic_review_path(review.comic_id, review), class:"btn btn-sm btn-outline-danger"  %>
+              </div>
+            <% end %>
+          </td>
+        </tr>
+        <% if review.comments.exists? %>
+          <%= render "public/comments/index", review: review %>
+        <% end %>
+      <% else %>
+        <tr>
+          <td colspan="5">
+            <p class="text-danger"><strong>このレビューは管理者によって削除されました。</strong></p>
+          </td>
+        </tr>
       <% end %>
     <% end %>
   </tbody>

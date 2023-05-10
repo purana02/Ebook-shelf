@@ -31,16 +31,19 @@ scope module: :public do
   resources :comic_each_sites, only: [:show]
  #漫画関連
   resources :comics, only: [:index, :show, :new, :create] do
-    resources :reviews, except: [:index,:show] do
+    resources :reviews, except: [:index,:show] do #レビュー
       member do
         get "confirm_reported" => "reviews#confirm_reported"
         patch "is_reported" => "reviews#is_reported"
       end
-      get "confirm_reported" => "comments#confirm_reported"
-      patch "is_reported" => "comments#is_reported"
-      resources :comments, only: [:new, :create]
+      resources :comments, only: [:new, :create] do #コメント
+        member do
+          get "confirm_reported" => "comments#confirm_reported"
+          patch "is_reported" => "comments#is_reported"
+        end
+      end
     end
-    resource :favorites, only: [:create, :destroy]
+    resource :favorites, only: [:create, :destroy] #お気に入り
   end
 end
 

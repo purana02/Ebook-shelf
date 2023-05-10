@@ -1,14 +1,47 @@
 <div class="container">
   <div class="row">
+    <div class="col-md-9 mx-auto mt-5 alert alert-danger">
+      <h5 class="text-center">
+        <i class="fas fa-exclamation-triangle"></i>
+        <strong>不適切レビューを報告しますか？</strong>
+      </h5>
+      <p class="text-center text-black">
+        以下のレビュー内容が不適切であると思われる場合は「報告する」ボタンをクリックしてください。<br>
+        「報告しない」ボタンをクリックすると、報告せずに前のレビュー画面に戻ります。
+      </p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6 mx-auto mt-5 border border-info">
+      <p class="text-center"><strong><%= @review.customer.nickname %>さんのレビュー</strong></p>
+      <div>
+        <h6>レビュータイトル：<%= @review.title %></h6>
+        <p>レビュー内容：<%= @review.body %></p>
+      </div>
+    </div>
+  </div>
+  <div class="row">
     <div class="col-md-6 mx-auto mt-5">
-      <h3 class="text-center">本当に通報しますか？</h3>
-      <p class="text-center">退会すると、会員登録情報や
-      <br>これまで登録した情報が閲覧できなくなります。
-      <br>退会する場合は、「退会する」をクリックしてください。</p>
-        <div class="d-grid gap-2 d-md-block text-center">
-          <%= link_to "通報しない", comic_path(@comic), class: 'btn btn-primary' %>
-          <%= link_to "通報する", comic_review_is_reported(@comic, @review), method: :patch, class: 'btn btn-danger text-light text-decoration-none' %>
-        </div>
+      <div class="d-grid gap-2 d-md-block text-center">
+        <%= link_to "報告しない", comic_path(@comic), class: 'btn btn-outline-primary' %>
+        <%= link_to "報告する", comic_review_is_reported_path(@comic, @review), method: :patch, class: 'btn btn-outline-danger text-decoration-none' %>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-7 mx-auto mt-5 mb-5 border border-danger">
+      <h5 class="text-center"><i class="fas fa-exclamation-triangle"></i><strong>ご注意</strong></h3>
+      <p class="text-center text-black">
+        レビューの報告は、不適切だと思うレビューを管理者側に報告できる機能です。
+        以下のようなレビューが報告された場合、レビューの投稿者や利用者に事前の告知なく削除するなどの措置を取らせていただく場合があります。
+      </p>
+      <ol>
+        <li>他者を誹謗中傷する内容</li>
+        <li>同一人物が悪意を持って行う複数書き込み</li>
+        <li>営利宣伝目的の内容・法律や公序良俗に反する内容</li>
+        <li>個人情報や他者の権利やプライバシーを侵害する内容</li>
+        <li>その他、管理者側が不適切と判断した内容</li>
+      </ol>
     </div>
   </div>
 </div>

@@ -1,2 +1,50 @@
-<h1>Public::Comments#confirm_reported</h1>
-<p>Find me in app/views/public/comments/confirm_reported.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-md-9 mx-auto mt-5 alert alert-danger">
+      <h5 class="text-center">
+        <i class="fas fa-exclamation-triangle"></i>
+        <strong>不適切コメントを報告しますか？</strong>
+      </h5>
+      <p class="text-center text-black">
+        以下のコメント内容が不適切であると思われる場合は「報告する」ボタンをクリックしてください。<br>
+        「報告しない」ボタンをクリックすると、報告せずに前のレビュー画面に戻ります。
+      </p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6 mx-auto mt-5 border border-info">
+      <div>
+        <p><%= @review.customer.nickname %>さんのレビュー</p>
+        <p>レビュー内容：<%= @review.body %></p>
+      </div>
+      <p class="text-center"><strong>---上記レビューに対する<%= @comment.customer.nickname %>さんのコメント---</strong></p>
+      <div>
+        <p>コメント内容：<%= @review.body %></p>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6 mx-auto mt-5">
+      <div class="d-grid gap-2 d-md-block text-center">
+        <%= link_to "報告しない", comic_path(@comic), class: 'btn btn-outline-primary' %>
+        <%= link_to "報告する", is_reported_comic_review_comment_path(@comic, @review, @comment), method: :patch, class: 'btn btn-outline-danger text-decoration-none' %>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-7 mx-auto mt-5 mb-5 border border-danger">
+      <h5 class="text-center"><i class="fas fa-exclamation-triangle"></i><strong>ご注意</strong></h3>
+      <p class="text-center text-black">
+        コメントの報告は、不適切だと思うコメントを管理者側に報告できる機能です。
+        以下のようなコメントが報告された場合、コメントの投稿者や利用者に事前の告知なく削除するなどの措置を取らせていただく場合があります。
+      </p>
+      <ol>
+        <li>他者を誹謗中傷する内容</li>
+        <li>同一人物が悪意を持って行う複数書き込み</li>
+        <li>営利宣伝目的の内容・法律や公序良俗に反する内容</li>
+        <li>個人情報や他者の権利やプライバシーを侵害する内容</li>
+        <li>その他、管理者側が不適切と判断した内容</li>
+      </ol>
+    </div>
+  </div>
+</div>
