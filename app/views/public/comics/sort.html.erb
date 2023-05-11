@@ -1,0 +1,24 @@
+<div class="container px-5 px-sm-0">
+  <div class="row">
+    <div class="col-md-3">
+      <%= render 'public/genres/sidebar', genres: @genres %>
+      <%= render 'public/sites/sidebar', sites: @sites %>
+    </div>
+    <div class="col-md-8 offset-md-1" >
+      <div class="text-center mt-3 mb-5">
+        <% if params[:genre_id] %>
+          <span class="h3 border-bottom border-dark mt-3 mb-2"><strong><%= @genre.name %>一覧</strong></span>
+          <span class="h5"> (全<%= @genre.comics.all.count %>件)</span>
+        <% elsif params[:tag_id] %>
+          <span class="h3 border-bottom border-dark mt-3 mb-2"><strong><i class="fas fa-tag"></i><%= @tag.name %>一覧</strong></span>
+          <span class="h5"> (全<%= @tag.comics.all.count %>件)</span>
+        <% else %>
+          <span class="h3 border-bottom border-dark mt-3 mb-2"><strong>コミック一覧</strong></span>
+          <span class="h5"> (全<%= @comics.count %>件)</span>
+        <% end %>
+      </div>
+      <%= render 'sort_form', { sort_list: @sort_list, comic: @comic }%>
+      <%= render 'sort_result' %>
+    </div>
+  </div>
+</div>

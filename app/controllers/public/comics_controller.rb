@@ -2,6 +2,7 @@ class Public::ComicsController < ApplicationController
   def index
     @genres = Genre.all
     @sites = Site.all
+    @sort_list = Comic.sort_list
     if params[:genre_id]
       @genre = Genre.find(params[:genre_id])
       @comics = @genre.comics.all
@@ -11,8 +12,8 @@ class Public::ComicsController < ApplicationController
       @comics = @tag.comics.all
       @comics_all = @tag.comics.all
     else
-      @comics_all = Comic.all
       @comics = Comic.all
+      @comics_all = Comic.all
     end
   end
 
@@ -65,11 +66,23 @@ class Public::ComicsController < ApplicationController
     @sites = Site.all
   end
 
+  def sort
+    @genres = Genre.all
+    @sites = Site.all
+    @sort_list = Comic.sort_list
+    @genre = Genre.find(params[:genre_id])
+    @tag = Tag.find(params[:tag_id])
+    @comics= Comic.all
+  end
+
   private
   def comic_params
     params.require(:comic).permit(:title, :genre_id)
   end
   def having_params
     params.require(:having_comic).permit(:site_id)
+  end
+  def sort_params
+      params.permit(:sort)
   end
 end

@@ -31,7 +31,10 @@ scope module: :public do
   resources :comic_each_sites, only: [:show]
  #漫画関連
   resources :comics, only: [:index, :show, :new, :create] do
-    get "search_result" => "comics#search", on: :collection
+    collection do
+      get "search_result" => "comics#search"
+      get "sort_result" => "comics#sort"
+    end
     resources :reviews, except: [:index,:show] do #レビュー
       member do
         get "confirm_reported" => "reviews#confirm_reported"
