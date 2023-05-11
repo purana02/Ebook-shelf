@@ -24,7 +24,7 @@
     <div class="col-md-6 mx-auto mt-5">
       <div class="d-grid gap-2 d-md-block text-center">
         <%= link_to "報告しない", comic_path(@comic), class: 'btn btn-outline-primary' %>
-        <%= link_to "報告する", comic_review_is_reported_path(@comic, @review), method: :patch, class: 'btn btn-outline-danger text-decoration-none' %>
+        <%= link_to "報告する", is_reported_comic_review_path(@comic, @review), method: :patch, class: 'btn btn-outline-danger text-decoration-none' %>
       </div>
     </div>
   </div>

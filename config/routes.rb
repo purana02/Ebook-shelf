@@ -67,6 +67,7 @@ namespace :admin do
   resources :comments, except: [:edit, :new, :create]
  #サイト検索結果画面
   resources :comic_each_sites, only: [:show]
+ #通報関連
   resources :reporteds, only: [:index, :update]
   resources :reported_comments, only: [:update]
 end

@@ -1,0 +1,22 @@
+<table class='table table-hover table-inverse'>
+  <thead>
+    <tr>
+      <th>課金日</th>
+      <th>サイト名</th>
+      <th>金額</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% billings.each do |billing| %>
+    <tr>
+      <td><%= billing.post_date %></td>
+      <td><%= billing.site.name %></td>
+      <td><%= billing.price.to_s(:delimited, delimiter: ',') %></td>
+      <td><%= link_to "編集", edit_customer_billing_path(billing), class:"btn btn-sm btn-success" %></td>
+      <td><%= link_to '削除', customer_billing_path(billing), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger"%></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>

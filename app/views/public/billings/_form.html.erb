@@ -1,0 +1,30 @@
+<%= render 'layouts/errors', obj: billing %>
+<div class="row justify-content-lg-center">
+  <div class="col-lg-8">
+    <%= form_with model: billing, url: customer_billings_path, method: :post do |f| %>
+    <form>
+      <div class="form-group row">
+        <label class="col-sm-4 col-form-label">課金日</label>
+        <div class="col-sm-8">
+          <%= f.date_field :post_date, class: "form-control" %>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label class="col-sm-4 col-form-label">課金サイト</label>
+        <div class="col-sm-8">
+          <%= f.select :site_id, options_from_collection_for_select(Site.all, :id, :name), { include_blank: "--選択してください--" } %>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label class="col-sm-4 col-form-label">課金額</label>
+        <div class="col-sm-8">
+          <%= f.text_field :price, class: "form-control", placeholder: "課金額を入力してください" %>
+        </div>
+      </div>
+      <div class="form-group row justify-content-center">
+        <%= f.submit "新規登録", class: "btn btn-success" %>
+      </div>
+    </form>
+    <% end %>
+  </div>
+ </div>
