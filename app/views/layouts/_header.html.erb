@@ -48,6 +48,9 @@
               <%=  link_to "レビュー一覧", admin_root_path, class: 'nav-link text-light' %>
             </li>
             <li class="nav-item">
+              <%=  link_to "通報一覧", admin_reporteds_path, class: 'nav-link text-light' %>
+            </li>
+            <li class="nav-item">
               <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: 'nav-link text-light' %>
             </li>
           <% else %>

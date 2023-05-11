@@ -3,6 +3,11 @@
     <td><%= comment.customer.nickname %>さんのコメント</td>
     <td colspan="4">
       <%= comment.body %>
+      <% if comment.customer_id != current_customer.id %>
+        <div class="float-right">
+          <%= link_to "コメントを報告する", confirm_reported_comic_review_comment_path(review.comic_id, review, comment.id), class:"small"  %>
+        </div>
+      <% end %>
     </td>
   </tr>
 <% end %>

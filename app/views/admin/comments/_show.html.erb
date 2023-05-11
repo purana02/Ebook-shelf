@@ -1,0 +1,64 @@
+<%= render 'layouts/errors', obj: comment %>
+<div class="row justify-content-lg-center">
+  <div class="col-lg-8">
+    <div class="row mt-2">
+      <div class="col-3">会員ID　</div>
+      <div class="col-3"><%= comment.customer.id %></div>
+      <div>
+        <%= link_to '投稿を削除する', admin_comment_path(comment), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-outline-danger"%>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-12 mx-auto mt-3 border border-info">
+        <div>
+          <p><%= @comment.review.customer.nickname %>さんのレビュー</p>
+          <p>レビュー内容：<%= @comment.review.body %></p>
+        </div>
+        <p class="text-center"><strong>---上記レビューに対する<%= @comment.customer.nickname %>さんのコメント---</strong></p>
+        <div>
+          <p>コメント内容：<%= @comment.body %></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row justify-content-lg-center">
+  <div class="col-lg-8 mt-2">
+    <%= form_with model: comment, url: admin_comment_path(comment), method: :patch do |f| %>
+    <form>
+      <div class="form-group row">
+        <div class="col-sm-4 col-form-label">通報　</div>
+        <div class="col-6 mt-2">
+          <%= f.radio_button :is_reported, "true" %>
+          <%= f.label :is_reported_true, "あり" %>
+          <%= f.radio_button :is_reported, "false" %>
+          <%= f.label :is_reported_false, "なし" %>
+        </div>
+        <div class="col-2">
+          <%= f.submit "更新", class: "btn btn-sm btn-success" %>
+        </div>
+      </div>
+    </form>
+    <% end %>
+  </div>
+</div>
+<div class="row justify-content-lg-center">
+  <div class="col-lg-8 mt-2">
+    <%= form_with model: comment, url: admin_comment_path(comment), method: :patch do |f| %>
+    <form>
+      <div class="form-group row">
+        <div class="col-sm-4 col-form-label">公開・非公開　</div>
+        <div class="col-6 mt-2">
+          <%= f.radio_button :is_publishing, "true" %>
+          <%= f.label :is_publishing_true, "公開" %>
+          <%= f.radio_button :is_publishing, "false" %>
+          <%= f.label :is_publishing_false, "非公開" %>
+        </div>
+        <div class="col-2">
+          <%= f.submit "更新", class: "btn btn-sm btn-success" %>
+        </div>
+      </div>
+    </form>
+    <% end %>
+  </div>
+</div>

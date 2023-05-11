@@ -31,12 +31,19 @@ scope module: :public do
   resources :comic_each_sites, only: [:show]
  #漫画関連
   resources :comics, only: [:index, :show, :new, :create] do
-    resources :reviews, except: [:index,:show] do
-      get "confirm_reported" => "comments#confirm_reported"
-      patch "is_reported" => "comments#is_reported"
-      resources :comments, only: [:new, :create]
+    resources :reviews, except: [:index,:show] do #レビュー
+      member do
+        get "confirm_reported" => "reviews#confirm_reported"
+        patch "is_reported" => "reviews#is_reported"
+      end
+      resources :comments, only: [:new, :create] do #コメント
+        member do
+          get "confirm_reported" => "comments#confirm_reported"
+          patch "is_reported" => "comments#is_reported"
+        end
+      end
     end
-    resource :favorites, only: [:create, :destroy]
+    resource :favorites, only: [:create, :destroy] #お気に入り
   end
 end
 
@@ -60,6 +67,9 @@ namespace :admin do
   resources :comments, except: [:edit, :new, :create]
  #サイト検索結果画面
   resources :comic_each_sites, only: [:show]
+ #通報関連
+  resources :reporteds, only: [:index, :update]
+  resources :reported_comments, only: [:update]
 end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

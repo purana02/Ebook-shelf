@@ -1,2 +1,15 @@
-<h1>Public::Billings#new</h1>
-<p>Find me in app/views/public/billings/new.html.erb</p>
+<div class="container px-5 px-sm-0">
+  <div class="row">
+    <div class="col-md-3">
+      <%= render 'public/customers/sidebar' %>
+    </div>
+    <div class="col-md-8 offset-md-1" >
+      <div class="row">
+        <h3 class="col-lg-12　text-center">新規課金登録</h3>
+      </div>
+      <div>
+        <%= render 'form', billing: @billing %>
+      </div>
+  　</div>
+　</div>
+</div>

@@ -1,2 +1,44 @@
-<h1>Public::Billings#edit</h1>
-<p>Find me in app/views/public/billings/edit.html.erb</p>
+<div class="container px-5 px-sm-0">
+  <div class="row">
+    <div class="col-md-3">
+      <%= render 'public/customers/sidebar' %>
+    </div>
+    <div class="col-md-8 offset-md-1" >
+      <div class="row">
+        <h3 class="col-lg-12　text-center">課金情報編集</h3>
+      </div>
+      <div>
+        <%= render 'layouts/errors', obj: @billing %>
+        <div class="row justify-content-lg-center">
+          <div class="col-lg-8">
+            <%= form_with model: @billing, url: customer_billing_path(@billing), method: :patch do |f| %>
+            <form>
+              <div class="form-group row">
+                <label class="col-sm-4 col-form-label">課金日</label>
+                <div class="col-sm-8">
+                  <%= f.date_field :post_date, class: "form-control" %>
+                </div>
+              </div>
+              <div class="form-group row">
+                <label class="col-sm-4 col-form-label">課金サイト</label>
+                <div class="col-sm-8">
+                  <%= f.select :site_id, options_from_collection_for_select(Site.all, :id, :name)%>
+                </div>
+              </div>
+              <div class="form-group row">
+                <label class="col-sm-4 col-form-label">課金額</label>
+                <div class="col-sm-8">
+                  <%= f.text_field :price, class: "form-control"%>
+                </div>
+              </div>
+              <div class="form-group row justify-content-center">
+                <%= f.submit "編集", class: "btn btn-success" %>
+              </div>
+            </form>
+            <% end %>
+          </div>
+        </div>
+      </div>
+  　</div>
+　</div>
+</div>

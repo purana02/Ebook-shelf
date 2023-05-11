@@ -29,6 +29,15 @@
           <div class="text-muted"><%= "なし" %></div>
         <% end %>
       </td>
+      <td>
+        <% if review.is_publishing == false %>
+          <div class="text-secondary"><%= "非公開" %></div>
+        <% elsif review.is_reported == true %>
+          <div class="text-danger font-weight-bold"><%= "通報" %></div>
+        <% else %>
+          <div class="text-muted"><%= "ー" %></div>
+        <% end %>
+      </td>
     </tr>
     <% end %>
   </tbody>

@@ -24,6 +24,25 @@ class Public::CommentsController < ApplicationController
   end
 
   def confirm_reported
+    @comment = Comment.find(params[:id])
+    @review = Review.find(params[:review_id])
+    @comic = Comic.find(params[:comic_id])
+  end
+
+  def is_reported
+    @comment = Comment.find(params[:id])
+    @review = Review.find(params[:review_id])
+    @comic = Comic.find(params[:comic_id])
+    if @comment.update(is_reported: true)
+      reported = ReportedComments.new
+      reported.customer_id = current_customer.id
+      reported.comment_id = params[:id]
+      reported.save
+      flash[:notice] = "コメントの報告をしました"
+      redirect_to comic_path(@comic)
+    else
+      render 'confirm_reported'
+    end
   end
 
   private

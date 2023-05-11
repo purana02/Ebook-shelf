@@ -21,6 +21,26 @@ class Public::ReviewsController < ApplicationController
     end
   end
 
+  def confirm_reported
+    @comic = Comic.find(params[:comic_id])
+    @review = Review.find(params[:id])
+  end
+
+  def is_reported
+    @comic = Comic.find(params[:comic_id])
+    @review = Review.find(params[:id])
+    if @review.update(is_reported: true)
+      reported = Reported.new
+      reported.customer_id = current_customer.id
+      reported.review_id = params[:id]
+      reported.save
+      flash[:notice] = "レビューの報告をしました"
+      redirect_to comic_path(@comic)
+    else
+      render 'confirm_reported'
+    end
+  end
+
   def edit
   end
 

@@ -1,8 +1,10 @@
 class Review < ApplicationRecord
   belongs_to :comic
   belongs_to :customer
+  belongs_to :comic
   has_many :comments, dependent: :destroy
- 
+  has_many :reporteds, dependent: :destroy
+
  #星毎の件数を数える
   scope :star5, -> { where(evaluation: 5).count}
   scope :star4, -> { where(evaluation: 4).count}
@@ -12,5 +14,5 @@ class Review < ApplicationRecord
 
  #会員に通報されたレビューがあるか調べる
   scope :reported, -> { where(is_reported: true) }
-  
+
 end
