@@ -1,0 +1,81 @@
+<div class="text-center mt-3 mb-5">
+  <span class="h3 border-bottom border-dark mt-3 mb-2"><strong><%= params[:keyword] %>の検索結果</strong></span>
+  <span class="h5"> (全<%= comics.count + tags.count %>件)</span>
+</div>
+<table class='table table-hover table-inverse'>
+  <thead>
+    <tr>
+      <th>タイトル</th>
+      <th>平均</th>
+      <th>レビュー数</th>
+      <th>お気に入り登録数</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% if comics.count == 0 && tags.count == 0 %>
+      <tr>
+        <td colspan="4">
+          <h4 class="text-danger"><strong>検索結果に当てはまる漫画がありません。</strong></h4>
+        </td>
+      </tr>
+    <% elsif comics.count >=1 %>
+      <% comics.each do |comic| %>
+      <tr>
+        <td>
+          <%= link_to comic_path(comic) do %>
+            <%= comic.title %>
+           <% end %>
+        </td>
+        <td>
+          <% unless comic.reviews.empty? %>
+            <%= comic.reviews.average(:evaluation).round(1) %>
+          <% else %>
+            レビューなし
+          <% end %>
+        </td>
+        <td><%= comic.reviews.count %>件</td>
+        <td><i class="fas fa-star" aria-hidden="true" style="color: #ffbb29;"></i><%= comic.favorites.count %>件</td>
+      </tr>
+      <% end %>
+        <% if tags.count >= 1%>
+          <% tags.each do |tag| %>
+          <tr>
+            <td>
+              <%= link_to comic_path(tag) do %>
+                <%= tag.title %>
+               <% end %>
+            </td>
+            <td>
+              <% unless tag.reviews.empty? %>
+                <%= tag.reviews.average(:evaluation).round(1) %>
+              <% else %>
+                レビューなし
+              <% end %>
+            </td>
+            <td><%= tag.reviews.count %>件</td>
+            <td><i class="fas fa-star" aria-hidden="true" style="color: #ffbb29;"></i><%= tag.favorites.count %>件</td>
+          </tr>
+          <% end %>
+        <% end %>
+    <% else %>
+      <% tags.each do |tag| %>
+        <tr>
+          <td>
+            <%= link_to comic_path(tag) do %>
+              <%= tag.title %>
+            <% end %>
+          </td>
+          <td>
+            <% unless tag.reviews.empty? %>
+              <%= tag.reviews.average(:evaluation).round(1) %>
+            <% else %>
+              レビューなし
+            <% end %>
+          </td>
+          <td><%= tag.reviews.count %>件</td>
+          <td><i class="fas fa-star" aria-hidden="true" style="color: #ffbb29;"></i><%= tag.favorites.count %>件</td>
+        </tr>
+      <% end %>
+    <% end %>
+  </tbody>
+</table>

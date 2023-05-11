@@ -1,9 +1,12 @@
 <div class="text-center mt-3 mb-5">
   <% if params[:genre_id] %>
-    <span class="h3 border-bottom border-dark mt-2 mb-2"><strong><%= genre.name %>一覧</strong></span>
+    <span class="h3 border-bottom border-dark mt-3 mb-2"><strong><%= genre.name %>一覧</strong></span>
+    <span class="h5"> (全<%= comics_all.count %>件)</span>
+  <% elsif params[:tag_id] %>
+    <span class="h3 border-bottom border-dark mt-3 mb-2"><strong><i class="fas fa-tag"></i><%= tag.name %>一覧</strong></span>
     <span class="h5"> (全<%= comics_all.count %>件)</span>
   <% else %>
-    <span class="h3 border-bottom border-dark mt-2 mb-2"><strong>コミック一覧</strong></span>
+    <span class="h3 border-bottom border-dark mt-3 mb-2"><strong>コミック一覧</strong></span>
     <span class="h5"> (全<%= comics_all.count %>件)</span>
   <% end %>
 </div>

@@ -31,4 +31,18 @@ class Comic < ApplicationRecord
     favorites.exists?(customer_id: customer.id)
   end
 
+  def self.search(search)
+    if search != ''
+      @comic = Comic.where(['title LIKE ?', "%#{search}%"])
+    end
+  end
+
+  def self.tag_search(search)
+    if search != ''
+      @tag = Tag.where(['name LIKE ?', "%#{search}%"])
+      @taggings = Tagging.where(tag_id: @tag.ids)
+      @tagging = @taggings.pluck(:comic_id)
+      @comic = Comic.where(id: @tagging)
+    end
+  end
 end

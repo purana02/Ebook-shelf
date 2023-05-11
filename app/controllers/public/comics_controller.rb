@@ -6,6 +6,10 @@ class Public::ComicsController < ApplicationController
       @genre = Genre.find(params[:genre_id])
       @comics = @genre.comics.all
       @comics_all = @genre.comics.all
+    elsif params[:tag_id]
+      @tag = Tag.find(params[:tag_id])
+      @comics = @tag.comics.all
+      @comics_all = @tag.comics.all
     else
       @comics_all = Comic.all
       @comics = Comic.all
@@ -54,7 +58,11 @@ class Public::ComicsController < ApplicationController
     end
   end
 
-  def edit
+  def search
+    @comics = Comic.search(params[:keyword])
+    @tags = Comic.tag_search(params[:keyword])
+    @genres = Genre.all
+    @sites = Site.all
   end
 
   private
