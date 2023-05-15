@@ -1,12 +1,10 @@
 <div class="row justify-content-lg-center">
-  <div class="col-lg-8">
-    <%= form_with url: sort_result_comics_path, method: :get, local: true do |f| %>
-    <form>
-      <div class="form-group row">
-        <%= f.select :sort, sort_list, , { include_blank: "--選択してください--" } %>
-        <%= f.submit "並べ替え", class:"btn btn-sm btn-outline-primary" %>
-      </div>
-    </form>
-    <% end %>
-  </div>
+  <%= form_with url: comics_path, method: :get, local: true do |f| %>
+  <form>
+    <div class="form-group row">
+      <%= f.select :sort, sort_list, { include_blank: "--選択してください--" } %>
+      <%= f.submit "並べ替え", class:"btn btn-sm btn-outline-primary" %>
+    </div>
+  </form>
+  <% end %>
 </div>

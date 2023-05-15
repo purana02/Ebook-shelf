@@ -33,7 +33,6 @@ scope module: :public do
   resources :comics, only: [:index, :show, :new, :create] do
     collection do
       get "search_result" => "comics#search"
-      get "sort_result" => "comics#sort"
     end
     resources :reviews, except: [:index,:show] do #レビュー
       member do

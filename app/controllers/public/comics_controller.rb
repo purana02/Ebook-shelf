@@ -12,7 +12,11 @@ class Public::ComicsController < ApplicationController
       @comics = @tag.comics.all
       @comics_all = @tag.comics.all
     else
-      @comics = Comic.all
+      if sort_params.present?
+        @comics = Comic.sort_comics(sort_params)
+      else
+        @comics = Comic.all
+      end
       @comics_all = Comic.all
     end
   end
@@ -64,15 +68,6 @@ class Public::ComicsController < ApplicationController
     @tags = Comic.tag_search(params[:keyword])
     @genres = Genre.all
     @sites = Site.all
-  end
-
-  def sort
-    @genres = Genre.all
-    @sites = Site.all
-    @sort_list = Comic.sort_list
-    @genre = Genre.find(params[:genre_id])
-    @tag = Tag.find(params[:tag_id])
-    @comics= Comic.all
   end
 
   private

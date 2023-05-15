@@ -37,7 +37,7 @@ class Comic < ApplicationRecord
       @comic = Comic.where(['title LIKE ?', "%#{search}%"])
     end
   end
-  
+
 #タグのキーワード検索
   def self.tag_search(search)
     if search != ''
@@ -48,24 +48,25 @@ class Comic < ApplicationRecord
     end
   end
 
-#漫画の並び替え  
-  def comics_sort(sort)
-    case sort
+#漫画の並び替え
+  def self.sort_comics(sort)
+    case sort[:sort]
     when 'updated_at_desc'
-      return all.order(created_at: :DESC)
+      order(created_at: :DESC)
     when 'favorites'
-      return find(Favorite.group(:comic_id).order(Arel.sql('count(comic_id) desc')).pluck(:comic_id))
+      find(Favorite.group(:comic_id).order(Arel.sql('count(comic_id) desc')).pluck(:comic_id))
     when 'review'
-      return find(Review.group(:comic_id).order(Arel.sql('count(comic_id) asc')).pluck(:comic_id))
+      find(Review.group(:comic_id).order(Arel.sql('count(comic_id) asc')).pluck(:comic_id))
     when 'evaluation'
-      return find(Review.group(:comic_id).order(Arel.sql('avg(evaluation) desc')).pluck(:comic_id))
+      find(Review.group(:comic_id).order(Arel.sql('avg(evaluation) desc')).pluck(:comic_id))
+    else
+      order(created_at: :ASC)
     end
   end
 
 #並び替えリスト
   scope :sort_list, -> {
-    {"並び替え" => "",
-     "新着順" => "updated_at_desc",
+    {"新着順" => "updated_at_desc",
      "レビュー数順" => "review",
      "お気に入り数順" => "favorites",
      "評価の高い順" => "evaluation"
