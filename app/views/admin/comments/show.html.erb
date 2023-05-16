@@ -1,0 +1,12 @@
+<div class="container px-5 px-sm-0">
+  <div class="row">
+    <div class="col-md-3">
+      <%= render 'admin/genres/sidebar', genres: @genres %>
+      <%= render 'admin/sites/sidebar', sites: @sites %>
+    </div>
+    <div class="col-md-8 offset-md-1" >
+      <h3><%= @comment.customer.nickname %>さんのコメント</h3>
+      <%= render 'show', comment: @comment %>
+    </div>
+  </div>
+</div>

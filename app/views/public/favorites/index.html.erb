@@ -1,0 +1,15 @@
+<div class="container px-5 px-sm-0">
+  <div class="row">
+    <div class="col-md-3">
+      <%= render 'public/customers/sidebar' %>
+    </div>
+    <div class="col-md-8 offset-md-1" >
+      <div class="row">
+        <h2 class="mr-2">お気に入り一覧</h2>
+        <span class="h5 text-lowercase mt-2"> (全<%= @favorites.count %>件)</span>
+      </div>
+      <!--会員の所持している漫画一覧-->
+      <%= render 'index', favorites: @favorites %>
+    </div>
+  </div>
+</div>

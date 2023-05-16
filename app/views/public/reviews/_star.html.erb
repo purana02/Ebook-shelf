@@ -1,0 +1,101 @@
+<h6><strong>レビュー件数:<%= comic.reviews.count %>件</strong></h6>
+<div class="row">
+<div id="rate5" class="mr-3"></div>
+<p>:<%= comic.reviews.star5 %>件</p>
+</div>
+<script>
+$(document).on('turbolinks:load', function() {
+  let elem = document.querySelector('#rate5');
+  if (elem == null) return;
+
+  elem.innerHTML = "";
+  let opt = {
+    starOn: "<%= asset_path('star-on.png') %>",
+    starOff: "<%= asset_path('star-off.png') %>",
+    starHalf: "<%= asset_path('star-half.png') %>",
+    score: "5",
+    readOnly: true,
+  };
+  raty(elem, opt);
+});
+</script>
+<div class="row">
+<div id="rate4" class="mr-3" ></div>
+<p>:<%= comic.reviews.star4 %>件</p>
+</div>
+<script>
+$(document).on('turbolinks:load', function() {
+  let elem = document.querySelector('#rate4');
+  if (elem == null) return;
+
+  elem.innerHTML = "";
+  let opt = {
+    starOn: "<%= asset_path('star-on.png') %>",
+    starOff: "<%= asset_path('star-off.png') %>",
+    starHalf: "<%= asset_path('star-half.png') %>",
+    score: "4",
+    readOnly: true,
+  };
+  raty(elem, opt);
+});
+</script>
+<div class="row">
+<div id="rate3" class="mr-3" ></div>
+<p>:<%= comic.reviews.star3 %>件</p>
+</div>
+<script>
+$(document).on('turbolinks:load', function() {
+  let elem = document.querySelector('#rate3');
+  if (elem == null) return;
+
+  elem.innerHTML = "";
+  let opt = {
+    starOn: "<%= asset_path('star-on.png') %>",
+    starOff: "<%= asset_path('star-off.png') %>",
+    starHalf: "<%= asset_path('star-half.png') %>",
+    score: "3",
+    readOnly: true,
+  };
+  raty(elem, opt);
+});
+</script>
+<div class="row">
+<div id="rate2" class="mr-3" ></div>
+<p>:<%= comic.reviews.star2 %>件</p>
+</div>
+<script>
+$(document).on('turbolinks:load', function() {
+  let elem = document.querySelector('#rate2');
+  if (elem == null) return;
+
+  elem.innerHTML = "";
+  let opt = {
+    starOn: "<%= asset_path('star-on.png') %>",
+    starOff: "<%= asset_path('star-off.png') %>",
+    starHalf: "<%= asset_path('star-half.png') %>",
+    score: "2",
+    readOnly: true,
+  };
+  raty(elem, opt);
+});
+</script>
+<div class="row">
+<div id="rate1" class="mr-3" ></div>
+<p>:<%= comic.reviews.star1 %>件</p>
+</div>
+<script>
+$(document).on('turbolinks:load', function() {
+  let elem = document.querySelector('#rate1');
+  if (elem == null) return;
+
+  elem.innerHTML = "";
+  let opt = {
+    starOn: "<%= asset_path('star-on.png') %>",
+    starOff: "<%= asset_path('star-off.png') %>",
+    starHalf: "<%= asset_path('star-half.png') %>",
+    score: "1",
+    readOnly: true,
+  };
+  raty(elem, opt);
+});
+</script>

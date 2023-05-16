@@ -1,0 +1,17 @@
+<div class="container">
+  <div class="row">
+    <h3 class="col-lg-auto bg-light text-center">サイト編集</h3>
+  </div>
+  <%= render 'layouts/errors', obj: @site %>
+  <div class="row">
+    <div class="col-lg-5">
+      <%= form_with model: @site, url: admin_site_path(@site) do |f| %>
+        <div class="form-group row justify-content-center">
+          <label for="site" class="col-lg-3 col-form-label">サイト名</label>
+          <div class="col-lg-auto"><%= f.text_field :name %></div>
+          <%= f.submit '編集する', class: "btn btn-success" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

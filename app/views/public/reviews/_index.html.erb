@@ -1,0 +1,39 @@
+<div class="col-md-12 section s_07">
+  <% reviews.each do |review| %>
+  <% if review.is_publishing == true %>
+    <div class="accordion_one">
+      <div class="accordion_header d-flex justify-content-start">
+        <h5><%= review.customer.nickname %>さんの投稿</h5>
+        <div class="h6 d-inline-flex"><%= render "public/reviews/starviews", review: review %></div>
+        <div class="i_box"><i class="one_i"></i></div>
+      </div>
+      <div class="accordion_inner">
+        <div class="accordion_one">
+          <div class="accordion_header row">
+           <p class="col-6"><%= review.body %></p>
+            <% if review.customer_id != current_customer.id %>
+              <div class="float-right col-6">
+                <%= link_to "コメントする", new_comic_review_comment_path(review.comic_id, review), class:"btn btn-sm btn-outline-success" %>
+                <%= link_to "レビューを報告する", confirm_reported_comic_review_path(review.comic_id, review), class:"btn btn-sm btn-outline-danger"  %>
+              </div>
+            <% end %>
+          </div>
+        </div>
+        <% if review.comments.exists? %>
+        <div class="accordion_one">
+          <div class="accordion_header d-flex justify-content-center">
+            <h5>このレビューへのコメント</h5>
+            <div class="i_box"><i class="one_i"></i></div>
+          </div>
+          <div class="accordion_inner">
+            <div class="accordion_one">
+              <%= render "public/comments/index", review: review %>
+            </div>
+          </div>
+        </div>
+        <% end %>
+    </div>
+    </div>
+  <% end %>
+  <% end %>
+</div>

@@ -1,0 +1,10 @@
+<% if comic.favorited_by?(current_customer) %>
+  <%= link_to comic_favorites_path(comic), method: :delete,class:"btn btn-sm btn-info", remote: true do %>
+   <i class="fas fa-star" aria-hidden="true" style="color: #ffbb29;"></i>
+    お気に入りから外す
+  <% end %>
+<% else %>
+  <%= link_to comic_favorites_path(comic), method: :post,class:"btn btn-sm btn-outline-info", remote: true do %>
+    <i class="fas fa-star" aria-hidden="true" style="color: #4d62a3;"></i>お気に入り
+  <% end %>
+<% end %>

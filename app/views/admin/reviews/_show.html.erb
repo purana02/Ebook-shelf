@@ -1,0 +1,80 @@
+<%= render 'layouts/errors', obj: review %>
+<div class="row justify-content-lg-center">
+  <div class="col-lg-8">
+    <div class="row mt-2">
+      <div class="col-3">会員ID　</div>
+      <div class="col-3"><%= review.customer.id %></div>
+      <div>
+        <%= link_to '投稿を削除する', admin_comic_review_path(comic, review), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-outline-danger"%>
+      </div>
+    </div>
+    <div class="row mt-2">
+      <div class="col-3">タイトル　</div>
+      <div class="col-3"><%= review.title %></div>
+    </div>
+    <div class="row mt-2">
+      <div class="col-3">投稿内容　</div>
+      <div class="col-9 border border-info"><%= review.body %></div>
+    </div>
+  </div>
+</div>
+<div class="row justify-content-lg-center">
+  <div class="col-lg-8">
+    <%= form_with model:[comic, review], url: admin_comic_review_path(comic, review), method: :patch do |f| %>
+    <form>
+      <div class="form-group row mt-2">
+        <div class="col-sm-4 col-form-label">ネタバレ　</div>
+        <div class="col-6 mt-2">
+          <%= f.radio_button :exists_spoiler, "true" %>
+          <%= f.label :exists_spoiler_true, "あり" %>
+          <%= f.radio_button :exists_spoiler, "false" %>
+          <%= f.label :exists_spoiler_false, "なし" %>
+        </div>
+        <div class="col-2">
+          <%= f.submit "更新", class: "btn btn-sm btn-success" %>
+        </div>
+      </div>
+    </form>
+    <% end %>
+  </div>
+</div>
+<div class="row justify-content-lg-center">
+  <div class="col-lg-8">
+    <%= form_with model:[comic, review], url: admin_comic_review_path(comic, review), method: :patch do |f| %>
+    <form>
+      <div class="form-group row">
+        <div class="col-sm-4 col-form-label">通報　</div>
+        <div class="col-6 mt-2">
+          <%= f.radio_button :is_reported, "true" %>
+          <%= f.label :is_reported_true, "あり" %>
+          <%= f.radio_button :is_reported, "false" %>
+          <%= f.label :is_reported_false, "なし" %>
+        </div>
+        <div class="col-2">
+          <%= f.submit "更新", class: "btn btn-sm btn-success" %>
+        </div>
+      </div>
+    </form>
+    <% end %>
+  </div>
+</div>
+<div class="row justify-content-lg-center">
+  <div class="col-lg-8">
+    <%= form_with model:[comic, review], url: admin_comic_review_path(comic, review), method: :patch do |f| %>
+    <form>
+      <div class="form-group row">
+        <div class="col-sm-4 col-form-label">公開・非公開　</div>
+        <div class="col-6 mt-2">
+          <%= f.radio_button :is_publishing, "true" %>
+          <%= f.label :is_publishing_true, "公開" %>
+          <%= f.radio_button :is_publishing, "false" %>
+          <%= f.label :is_publishing_false, "非公開" %>
+        </div>
+        <div class="col-2">
+          <%= f.submit "更新", class: "btn btn-sm btn-success" %>
+        </div>
+      </div>
+    </form>
+    <% end %>
+  </div>
+</div>

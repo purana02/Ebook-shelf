@@ -1,0 +1,12 @@
+<div class="container px-5 px-sm-0">
+  <div class="row">
+    <div class="col-md-3">
+      <%= render 'admin/genres/sidebar', genres: @genres %>
+      <%= render 'admin/sites/sidebar', sites: @sites %>
+    </div>
+    <div class="col-md-8 offset-md-1" >
+      <h2>レビュー一覧<span class="h5 ml-2"> (全<%= @reviews.count %>件)</span></h2>
+      <%= render 'admin/reviews/index', reviews: @reviews %>
+    </div>
+  </div>
+</div>

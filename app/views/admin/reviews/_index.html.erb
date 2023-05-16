@@ -1,0 +1,44 @@
+<table class='table table-hover table-inverse'>
+  <thead>
+    <tr>
+      <th>投稿日</th>
+      <th>投稿者</th>
+      <th>コミックタイトル</th>
+      <th>レビュータイトル</th>
+      <th>星</th>
+      <th>ネタバレ</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% reviews.each do |review| %>
+    <tr>
+      <td>
+        <%= link_to admin_comic_review_path(review.comic_id,review) do %>
+          <%= review.created_at.strftime('%Y/%m/%d') %>
+        <% end %>
+      </td>
+      <td><%= review.customer.nickname %></td>
+      <td><%= review.comic.title %></td>
+      <td><%= review.title %></td>
+      <td><i class="fas fa-star" aria-hidden="true" style="color: #ffbb29;"></i><%= review.evaluation %></td>
+      <td>
+        <% if review.exists_spoiler == true %>
+          <div class="text-danger"><%= "あり" %></div>
+        <% else %>
+          <div class="text-muted"><%= "なし" %></div>
+        <% end %>
+      </td>
+      <td>
+        <% if review.is_publishing == false %>
+          <div class="text-secondary"><%= "非公開" %></div>
+        <% elsif review.is_reported == true %>
+          <div class="text-danger font-weight-bold"><%= "通報" %></div>
+        <% else %>
+          <div class="text-muted"><%= "ー" %></div>
+        <% end %>
+      </td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>

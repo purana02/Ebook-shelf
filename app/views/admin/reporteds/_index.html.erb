@@ -1,0 +1,44 @@
+<table class='table table-hover table-inverse'>
+  <thead>
+    <tr>
+      <th>通報日</th>
+      <th>通報者</th>
+      <th>ID</th>
+      <th>レビュータイトル</th>
+      <th>レビュー投稿者</th>
+      <th>ステータス</th>
+      <th>対応状況</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% reporteds.each do |reported| %>
+    <tr>
+      <td>
+        <%= link_to admin_comic_review_path(reported.review.comic_id,reported.review_id) do %>
+          <%= reported.created_at.strftime('%Y/%m/%d') %>
+        <% end %>
+      </td>
+      <td><%= reported.customer.nickname %></td>
+      <td><%= reported.review_id %></td>
+      <td><%= reported.review.title %></td>
+      <td><%= reported.review.customer.nickname %></td>
+      <td>
+        <% if reported.review.is_publishing == false %>
+          <div class="text-secondary"><%= "非公開" %></div>
+        <% elsif reported.review.is_reported == true %>
+          <div class="text-danger"><%= "通報" %></div>
+        <% else %>
+          <div class="text-muted"><%= "ー" %></div>
+        <% end %>
+      </td>
+      <td>
+        <% if reported.is_fixed == true %>
+          <%= link_to "対応済み", admin_reported_path(reported), method: :patch, class:"btn btn-sm btn-outline-success" %>
+        <% else %>
+          <%= link_to "未対応", admin_reported_path(reported), method: :patch, class:"btn btn-sm btn-outline-danger" %>
+        <% end %>
+      </td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>

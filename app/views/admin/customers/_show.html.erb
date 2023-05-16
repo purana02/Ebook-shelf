@@ -1,0 +1,26 @@
+<div class="row">
+  <div class="col-lg-12">
+    <div class="row mt-2">
+      <div class="col-3">会員ID　</div>
+      <div class="col-3"><%= customer.id %></div>
+    </div>
+    <div class="row mt-2">
+      <div class="col-3">ニックネーム　</div>
+      <div class="col-3"><%= customer.nickname %></div>
+    </div>
+    <div class="row mt-2">
+      <div class="col-3">メールアドレス　</div>
+      <div class="col-3"><%= customer.email %></div>
+    </div>
+    <div class="row mt-2">
+      <div class="col-3">会員ステータス　</div>
+      <div class="col-3" class="font-weight-bold">
+        <% if customer.is_deleted == false %>
+          <div class="text-success"><%= "有効" %></div>
+        <% else %>
+          <div class="text-muted"><%= "退会済み" %></div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
