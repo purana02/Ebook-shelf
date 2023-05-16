@@ -1,6 +1,10 @@
 class Public::BillingsController < ApplicationController
   def index
-    @billings = Billing.all.order(created_at: :desc)
+    if site_params.present?
+      @billings = current_customer.billings.where(site_id: site_params).order(created_at: :desc)
+    else
+      @billings = current_customer.billings.all.order(created_at: :desc)
+    end
   end
 
   def new
@@ -36,5 +40,9 @@ class Public::BillingsController < ApplicationController
   private
   def billing_params
     params.require(:billing).permit(:site_id, :price, :post_date)
+  end
+
+  def site_params
+    params.permit(:site_id)
   end
 end

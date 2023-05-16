@@ -31,4 +31,48 @@ class Comic < ApplicationRecord
     favorites.exists?(customer_id: customer.id)
   end
 
+#漫画のキーワード検索
+  def self.search(search)
+    if search != ''
+      @comic = Comic.where(['title LIKE ?', "%#{search}%"])
+    end
+  end
+
+#タグのキーワード検索
+  def self.tag_search(search)
+    if search != ''
+      @tag = Tag.where(['name LIKE ?', "%#{search}%"])
+      @taggings = Tagging.where(tag_id: @tag.ids)
+      @tagging = @taggings.pluck(:comic_id)
+      @comic = Comic.where(id: @tagging)
+    end
+  end
+
+#星平均の高い順に並び替え
+scope :star_rank, -> {find(Review.group(:comic_id).order(Arel.sql('avg(evaluation) desc')).limit(5).pluck(:comic_id))}
+
+#漫画の並び替え
+  def self.sort_comics(sort)
+    case sort[:sort]
+    when 'updated_at_desc'
+      order(created_at: :DESC)
+    when 'favorites'
+      find(Favorite.group(:comic_id).order(Arel.sql('count(comic_id) desc')).pluck(:comic_id))
+    when 'review'
+      find(Review.group(:comic_id).order(Arel.sql('count(comic_id) asc')).pluck(:comic_id))
+    when 'evaluation'
+      find(Review.group(:comic_id).order(Arel.sql('avg(evaluation) desc')).pluck(:comic_id))
+    else
+      order(created_at: :ASC)
+    end
+  end
+
+#並び替えリスト
+  scope :sort_list, -> {
+    {"新着順" => "updated_at_desc",
+     "レビュー数順" => "review",
+     "お気に入り数順" => "favorites",
+     "評価の高い順" => "evaluation"
+    }
+   }
 end

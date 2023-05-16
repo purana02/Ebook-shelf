@@ -1,6 +1,6 @@
 <div class="text-center mt-3 mb-5">
-    <span class="h3 border-bottom border-dark mt-2 mb-2"><strong><%= site.name %>一覧</strong></span>
-    <span class="h5"> (全<%= comics_each.count %>件)</span>
+  <span class="h3 border-bottom border-dark mt-2 mb-2"><strong><%= site.name %>一覧</strong></span>
+  <span class="h5"> (全<%= comics_each.count %>件)</span>
 </div>
 <table class='table table-hover table-inverse'>
   <thead>
@@ -12,22 +12,22 @@
     </tr>
   </thead>
   <tbody>
-    <% comics_each.each do |comic| %>
+    <% comics_each.each do |each| %>
     <tr>
       <td>
-        <%= link_to comic_path(comic.comic.id) do %>
-        <%= comic.comic.title %>
+        <%= link_to comic_path(each.comic.id) do %>
+        <%= each.comic.title %>
         <% end %>
       </td>
       <td>
-        <% unless comic.comic.reviews.empty? %>
-          <%= comic.comic.reviews.average(:evaluation).round(1) %>
+        <% unless each.comic.reviews.empty? %>
+          <%= each.comic.reviews.average(:evaluation).round(1) %>
         <% else %>
           レビューなし
         <% end %>
       </td>
-      <td><%= comic.comic.reviews.count %>件</td>
-      <td><i class="fas fa-star" aria-hidden="true" style="color: #ffbb29;"></i><%= comic.comic.favorites.count %></td>
+      <td><%= each.comic.reviews.count %>件</td>
+      <td><i class="fas fa-star" aria-hidden="true" style="color: #ffbb29;"></i><%= each.comic.favorites.count %></td>
     </tr>
     <% end %>
   </tbody>

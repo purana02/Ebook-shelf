@@ -70,6 +70,14 @@
               <%=  link_to "ゲストログイン", customers_guest_sign_in_path, class: 'nav-link text-light', method: :post %>
             </li>
           <% end %>
+          <div class="form-inline my-2 my-lg-0">
+            <%= form_with url: search_result_comics_path, method: :get, local: true do |f| %>
+              <%= f.text_field :keyword, class:"form-control input-group-prepend bg-light", placeholder:"タグやキーワードで検索できます" %>
+              <%= button_tag type: "submit", class:"btn btn-light" do %>
+                <i class="fas fa-search fa-rotate-90" style="color: #e597b2;"></i>
+              <% end %>
+            <% end %>
+          </div>
         </ul>
       </div>
   </nav>

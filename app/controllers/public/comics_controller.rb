@@ -2,13 +2,22 @@ class Public::ComicsController < ApplicationController
   def index
     @genres = Genre.all
     @sites = Site.all
+    @sort_list = Comic.sort_list
     if params[:genre_id]
       @genre = Genre.find(params[:genre_id])
       @comics = @genre.comics.all
       @comics_all = @genre.comics.all
+    elsif params[:tag_id]
+      @tag = Tag.find(params[:tag_id])
+      @comics = @tag.comics.all
+      @comics_all = @tag.comics.all
     else
+      if sort_params.present?
+        @comics = Comic.sort_comics(sort_params)
+      else
+        @comics = Comic.all
+      end
       @comics_all = Comic.all
-      @comics = Comic.all
     end
   end
 
@@ -54,7 +63,11 @@ class Public::ComicsController < ApplicationController
     end
   end
 
-  def edit
+  def search
+    @comics = Comic.search(params[:keyword])
+    @tags = Comic.tag_search(params[:keyword])
+    @genres = Genre.all
+    @sites = Site.all
   end
 
   private
@@ -63,5 +76,8 @@ class Public::ComicsController < ApplicationController
   end
   def having_params
     params.require(:having_comic).permit(:site_id)
+  end
+  def sort_params
+      params.permit(:sort)
   end
 end

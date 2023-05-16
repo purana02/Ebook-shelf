@@ -1,20 +1,3 @@
-<% if params[:tag_id] %>
-  <div class="text-center mt-3 mb-5">
-    <span class="h3 border-bottom border-dark mt-3 mb-2"><strong><%= tag.name %>一覧</strong></span>
-    <span class="h5"> (全<%= @comics_all.count %>件)</span>
-  </div>
-<% elsif params[:genre_id] %>  
-  <div class="text-center mt-3 mb-5">
-    <span class="h3 border-bottom border-dark mt-3 mb-2"><strong><%= genre.name %>一覧</strong></span>
-    <span class="h5"> (全<%= @comics_all.count %>件)</span>
-  </div>
-<% else %>
-  <div class="text-center mt-3 mb-5">
-    <span class="h3 border-bottom border-dark mt-3 mb-2"><strong>コミック一覧</strong></span>
-    <span class="h5"> (全<%= @comics_all.count %>件)</span>
-  </div>
-  <%= render 'sort_form', sort_list: @sort_list %>
-<% end %>
 <table class='table table-hover table-inverse'>
   <thead>
     <tr>
