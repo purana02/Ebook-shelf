@@ -5,8 +5,14 @@
       <%= render 'public/sites/sidebar', sites: @sites %>
     </div>
     <div class="col-md-8 offset-md-1" >
-      <h2>人気コミックTop5</h2>
-      <h2>レビュー新着順</h2>
+      <div class="col-md-12 mt-3 mb-5">
+        <h2>人気コミックTop5</h2>
+        <%= render 'index', comics: @comics %>
+      </div>
+      <div class="col-md-12 mt-5">
+        <h2>レビュー新着順</h2>
+        <%= render 'reviews', reviews: @reviews %>
+      </div>
     </div>
   </div>
 </div>
