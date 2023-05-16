@@ -6,9 +6,9 @@ $(document).on('turbolinks:load', function() {
 
   elem.innerHTML = "";
   let opt = {
-    starOn: "<%= asset_path('star-on.png') %>",
-    starOff: "<%= asset_path('star-off.png') %>",
-    starHalf: "<%= asset_path('star-half.png') %>",
+    starOn: "image-url('star-on.png')",
+    starOff: "image-url('star-off.png')",
+    starHalf: "image-url('star-half.png')",
     score: "<%= review.evaluation %>",
     readOnly: true,
   };
