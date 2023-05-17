@@ -11,6 +11,9 @@ class Customer < ApplicationRecord
   has_many :reported_comments, dependent: :destroy
   has_many :billings, dependent: :destroy
 
+  validates :nickname, presence: true, uniqueness: true
+  validates :is_deleted, inclusion: { in: [true, false] }
+
   def self.guest
     find_or_create_by!(nickname: 'guestuser' ,email: 'guest@example.com') do |customer|
       customer.password = SecureRandom.urlsafe_base64

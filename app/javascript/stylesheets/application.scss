@@ -1,15 +1,27 @@
 @use '~bootstrap/scss/bootstrap';
 @use '~@fortawesome/fontawesome-free/scss/fontawesome';
 
+header{
+  background-color:#494544;
+}
+
+body{
+  background-color:#fff6e4;
+}
+.table-active{
+  color:#E4BC7F;
+  background-color:#494544;
+}
+
+.nav-item.nav-link{
+  color:#494544;
+}
+
 /*====================================================================
 .s_07 .accordion_one
 ====================================================================*/
-.s_07 .accordion_one {
-  max-width: 1024px;
-  margin: 0 auto;
-}
 .s_07 .accordion_one .accordion_header {
-  border-bottom: 1px solid #fff;
+  border-bottom: 1px solid black;
   position: relative;
   z-index: +1;
   cursor: pointer;

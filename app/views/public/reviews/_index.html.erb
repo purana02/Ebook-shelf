@@ -2,8 +2,8 @@
   <% reviews.each do |review| %>
   <% if review.is_publishing == true %>
     <div class="accordion_one">
-      <div class="accordion_header d-flex justify-content-start">
-        <h5><%= review.customer.nickname %>さんの投稿</h5>
+      <div class="accordion_header d-flex justify-content-start mb-3 mt-2">
+        <h5 class="mr-3"><%= review.customer.nickname %>さんの投稿</h5>
         <div class="h6 d-inline-flex"><%= render "public/reviews/starviews", review: review %></div>
         <div class="i_box"><i class="one_i"></i></div>
       </div>
@@ -20,7 +20,7 @@
           </div>
         </div>
         <% if review.comments.exists? %>
-        <div class="accordion_one">
+        <div class="accordion_one mt-2">
           <div class="accordion_header d-flex justify-content-center">
             <h5>このレビューへのコメント</h5>
             <div class="i_box"><i class="one_i"></i></div>

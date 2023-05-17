@@ -48,6 +48,8 @@ class Comic < ApplicationRecord
     end
   end
 
+validates :title, presence: true
+
 #星平均の高い順に並び替え
 scope :star_rank, -> {find(Review.group(:comic_id).order(Arel.sql('avg(evaluation) desc')).limit(5).pluck(:comic_id))}
 

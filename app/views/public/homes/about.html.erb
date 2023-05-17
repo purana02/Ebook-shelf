@@ -1,2 +1,23 @@
-<h1>Public::Homes#about</h1>
-<p>Find me in app/views/public/homes/about.html.erb</p>
+<div class="container">
+  <div class="title text-center">
+    <h1>About</h1>
+  </div>
+
+  <p class="text-center">
+    <strong>Ebook-shelf</strong>は電子書籍の本棚としてお使いいただけます。<br>
+    様々なサイトで購入した電子書籍を記録することができます。<br>
+    また、感想を投稿したり、他の会員の感想をご覧いただけます。<br>
+    ぜひ、ご利用ください。
+  </p>
+  <div class="btn-wrapper col-4 mx-auto">
+    <div class="row">
+      <%= link_to 'ログイン',new_customer_session_path, class: "btn btn-info btn-sm btn-block mb-3 sign_in" %>
+    </div>
+    <div class="row">
+      <%= link_to '新規会員登録',new_customer_registration_path, class: "btn btn-success btn-sm btn-block mb-3 sign_up" %>
+    </div>
+    <div class="row">
+      <%= link_to 'ゲストログイン',customers_guest_sign_in_path, class: "btn btn-primary btn-sm btn-block sign_up" %>
+    </div>
+  </div>
+</div>

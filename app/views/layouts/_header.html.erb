@@ -1,9 +1,11 @@
 <header>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-info">
-     <a class="navbar-brand" href="/"><big>EbookShelf</big></a>
+  <nav class="navbar navbar-expand-lg navbar-dark">
+    <%= link_to root_path do %>
+      <%= image_tag 'Ebook-shelf (1)', size: '100x100' %>
+    <% end %>
 
       <div class="d-flex justify-content-center">
-        <div class="text-light">
+        <div class="welcome">
           <% if customer_signed_in? %>
             ようこそ、<%= current_customer.nickname %>さん!
           <% end %>
@@ -18,63 +20,63 @@
         <ul class="navbar-nav ml-auto">
           <% if customer_signed_in? %>
             <li class="nav-item">
-              <%= link_to "マイページ",customer_path, class: 'nav-link text-light' %>
+              <%= link_to "マイページ",customer_path, class: 'nav-link' %>
             </li>
             <li class="nav-item">
-              <%=  link_to comics_path, class: 'nav-link text-light' do %>
+              <%=  link_to comics_path, class: 'nav-link' do %>
                <i class="fas fa-book-open"></i>漫画一覧
               <% end %>
             </li>
             <li class="nav-item">
-              <%=  link_to "課金一覧", customer_billings_path, class: 'nav-link text-light' %>
+              <%=  link_to "課金一覧", customer_billings_path, class: 'nav-link' %>
             </li>
             <li class="nav-item">
-              <%= link_to "ログアウト", destroy_customer_session_path, method: :delete,class: 'nav-link text-light' %>
+              <%= link_to "ログアウト", destroy_customer_session_path, method: :delete,class: 'nav-link' %>
             </li>
           <% elsif admin_signed_in? %>
             <li class="nav-item">
-              <%=  link_to "漫画一覧", admin_comics_path, class: 'nav-link text-light' %>
+              <%=  link_to "漫画一覧", admin_comics_path, class: 'nav-link' %>
             </li>
             <li class="nav-item">
-              <%= link_to "会員一覧",admin_customers_path,class: 'nav-link text-light' %>
+              <%= link_to "会員一覧",admin_customers_path,class: 'nav-link' %>
             </li>
             <li class="nav-item">
-              <%=  link_to "サイト一覧", admin_sites_path, class: 'nav-link text-light' %>
+              <%=  link_to "サイト一覧", admin_sites_path, class: 'nav-link' %>
             </li>
             <li class="nav-item">
-              <%=  link_to "ジャンル一覧", admin_genres_path, class: 'nav-link text-light' %>
+              <%=  link_to "ジャンル一覧", admin_genres_path, class: 'nav-link' %>
             </li>
             <li class="nav-item">
-              <%=  link_to "レビュー一覧", admin_root_path, class: 'nav-link text-light' %>
+              <%=  link_to "レビュー一覧", admin_root_path, class: 'nav-link' %>
             </li>
             <li class="nav-item">
-              <%=  link_to "通報一覧", admin_reporteds_path, class: 'nav-link text-light' %>
+              <%=  link_to "通報一覧", admin_reporteds_path, class: 'nav-link' %>
             </li>
             <li class="nav-item">
-              <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: 'nav-link text-light' %>
+              <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: 'nav-link' %>
             </li>
           <% else %>
             <li class="nav-item">
-              <%= link_to "About", about_path,class: 'nav-link text-light' %>
+              <%= link_to "About", about_path,class: 'nav-link' %>
             </li>
             <li class="nav-item">
-              <%=  link_to "漫画一覧", comics_path, class: 'nav-link text-light' %>
+              <%=  link_to "漫画一覧", comics_path, class: 'nav-link' %>
             </li>
             <li class="nav-item">
-              <%= link_to "新規登録", new_customer_registration_path,class: 'nav-link text-light' %>
+              <%= link_to "新規登録", new_customer_registration_path,class: 'nav-link' %>
             </li>
             <li class="nav-item">
-              <%= link_to "ログイン", new_customer_session_path ,class: 'nav-link text-light' %>
+              <%= link_to "ログイン", new_customer_session_path ,class: 'nav-link' %>
             </li>
             <li class="nav-item">
-              <%=  link_to "ゲストログイン", customers_guest_sign_in_path, class: 'nav-link text-light', method: :post %>
+              <%=  link_to "ゲストログイン", customers_guest_sign_in_path, class: 'nav-link', method: :post %>
             </li>
           <% end %>
           <div class="form-inline my-2 my-lg-0">
             <%= form_with url: search_result_comics_path, method: :get, local: true do |f| %>
               <%= f.text_field :keyword, class:"form-control input-group-prepend bg-light", placeholder:"タグやキーワードで検索できます" %>
               <%= button_tag type: "submit", class:"btn btn-light" do %>
-                <i class="fas fa-search fa-rotate-90" style="color: #e597b2;"></i>
+                <i class="fas fa-search fa-rotate-90" style="color: #494544;"></i>
               <% end %>
             <% end %>
           </div>
