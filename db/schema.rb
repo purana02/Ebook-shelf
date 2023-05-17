@@ -132,6 +132,7 @@ ActiveRecord::Schema.define(version: 2023_05_11_035026) do
     t.integer "comic_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["tag_id", "comic_id"], name: "index_taggings_on_tag_id_and_comic_id", unique: true
   end
 
   create_table "tags", force: :cascade do |t|

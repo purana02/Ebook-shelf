@@ -5,6 +5,6 @@ class CreateTaggings < ActiveRecord::Migration[6.1]
       t.integer :comic_id, null: false
       t.timestamps
     end
-    add_index :likes, [:tag_id, :comic_id], unique: true
+    add_index :taggings, [:tag_id, :comic_id], unique: true
   end
 end
