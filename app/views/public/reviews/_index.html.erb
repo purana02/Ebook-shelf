@@ -1,18 +1,29 @@
 <div class="col-md-12 section s_07">
   <% reviews.each do |review| %>
-  <% if review.is_publishing == true %>
+  <% if review.is_publishing == true && review.body.blank?%>
     <div class="accordion_one">
-      <div class="accordion_header d-flex justify-content-start mb-3 mt-2">
+      <div class="accordion_header d-flex justify-content-start title">
         <h5 class="mr-3"><%= review.customer.nickname %>さんの投稿</h5>
-        <div class="h6 d-inline-flex"><%= render "public/reviews/starviews", review: review %></div>
+        <div class="h6 d-inline-flex mb-3"><%= render "public/reviews/starviews", review: review %></div>
+        <div class="h6 d-inline-flex ml-2">（星評価のみの投稿です）</div>
+      </div>
+    </div>
+  <% elsif review.is_publishing == true %>
+    <div class="accordion_one">
+      <div class="accordion_header d-flex justify-content-start title">
+        <h5 class="mr-3"><%= review.customer.nickname %>さんの投稿</h5>
+        <div class="h6 d-inline-flex mb-3"><%= render "public/reviews/starviews", review: review %></div>
+        <% if review.exists_spoiler == true %>
+          <div class="h6 d-inline-flex spoiler-true ml-2 mb-1">ネタバレあり</div>
+        <% end %>
         <div class="i_box"><i class="one_i"></i></div>
       </div>
       <div class="accordion_inner">
         <div class="accordion_one">
-          <div class="accordion_header row">
-           <p class="col-6"><%= review.body %></p>
+          <div class="accordion_header">
+           <p class="text-break"><%= review.body %></p>
             <% if review.customer_id != current_customer.id %>
-              <div class="float-right col-6">
+              <div class="reported-btn">
                 <%= link_to "コメントする", new_comic_review_comment_path(review.comic_id, review), class:"btn btn-sm btn-outline-success" %>
                 <%= link_to "レビューを報告する", confirm_reported_comic_review_path(review.comic_id, review), class:"btn btn-sm btn-outline-danger"  %>
               </div>
@@ -20,8 +31,8 @@
           </div>
         </div>
         <% if review.comments.exists? %>
-        <div class="accordion_one mt-2">
-          <div class="accordion_header d-flex justify-content-center">
+        <div class="accordion_one">
+          <div class="accordion_header title">
             <h5>このレビューへのコメント</h5>
             <div class="i_box"><i class="one_i"></i></div>
           </div>
@@ -32,7 +43,13 @@
           </div>
         </div>
         <% end %>
+      </div>
     </div>
+  <% else %>
+    <div class="acordion_one">
+      <div class="accordion_header text-center title">
+        <h5 class="delete">この投稿は管理者によって削除されました</h5>
+      </div>
     </div>
   <% end %>
   <% end %>

@@ -6,22 +6,73 @@ header{
 }
 
 body{
-  background-color:#fff6e4;
-}
-.table-active{
-  color:#E4BC7F;
-  background-color:#494544;
+  background-color:#f7f3e9;
 }
 
-.nav-item.nav-link{
+a, strong, h1, h3, h4, h5{
   color:#494544;
+}
+
+a:hover{
+  color:#8b272b;
+}
+
+.rank, .login, .guest{
+  color:#c41a30;
+}
+
+td{
+  border-collapse: collapse;
+  border-bottom: 1px #c39c89 solid ;
+}
+
+th{
+  background-color:#bac8c6;
+  color:#494544;
+  border-bottom: 1px #c39c89 solid ;
+}
+
+tr, .confirm{
+  background-color:#e6dfcb;
+}
+
+.table-active th, .bg-side, .bg-side strong{
+  color:#E4BC7F;
+  background-color:#494544;
+  border: none;
+}
+
+.side tr{
+  background-color:#f7f3e9;
+  border: none;
+}
+
+.navbar-dark .navbar-nav .nav-link, .welcome{
+  color:#bac8c6;
+}
+.spoiler-true{
+  color:#c41a30;
+}
+
+.spoiler-false{
+  color:#7f5072;
+}
+
+.btn-outline-primary, .btn-outline-info, .btn-outline-success, .btn-outline-danger{
+  background-color:#f5f3f2;
 }
 
 /*====================================================================
 .s_07 .accordion_one
 ====================================================================*/
+.s_07 .accordion_one {
+  max-width: 1024px;
+  margin: 0 auto;
+}
 .s_07 .accordion_one .accordion_header {
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid #c39c89;
+  font-size: 20px;
+  padding: 30px 5%;
   position: relative;
   z-index: +1;
   cursor: pointer;
@@ -36,9 +87,11 @@ body{
   align-items: center;
   position: absolute;
   top: 50%;
-  right: 5%;
-  border: 1px solid #4d3233;
-  margin-top: -10px;
+  right: 3%;
+  width: 40px;
+  height: 40px;
+  border: 1px solid #c41a30;
+  margin-top: -20px;
   box-sizing: border-box;
   -webkit-transform: rotate(45deg);
   transform: rotate(45deg);
@@ -62,7 +115,7 @@ body{
 .s_07 .accordion_one .accordion_header .i_box .one_i:before, .s_07 .accordion_one .accordion_header .i_box .one_i:after {
   display: flex;
   content: '';
-  background-color: red;
+  background-color: #c41a30;
   border-radius: 10px;
   width: 18px;
   height: 4px;
@@ -97,3 +150,31 @@ body{
 .s_07 .accordion_one .accordion_inner p.txt_a_ac {
   margin: 0;
 }
+
+.s_07 .accordion_inner .accordion_one .accordion_header{
+  background-color: #e6dfcb;
+}
+
+.title{
+  height:20px;
+  background-color:#bac8c6;
+}
+
+@media screen and (max-width: 1024px) {
+  .s_07 .accordion_one .accordion_header {
+    font-size: 18px;
+  }
+  .s_07 .accordion_one .accordion_header .i_box {
+    width: 30px;
+    height: 30px;
+    margin-top: -15px;
+  }
+}
+@media screen and (max-width: 767px) {
+  .s_07 .accordion_one .accordion_header {
+    font-size: 16px;
+    text-align: left;
+    padding: 15px 60px 15px 15px;
+  }
+}
+

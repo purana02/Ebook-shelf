@@ -42,10 +42,10 @@
   </div>
 
   <div class="row">
-    <h6 class="col-lg-auto bg-light text-center">会員の方はこちらから<%= link_to "ログイン", customer_session_path %>してください</h6>
+    <h6 class="col-lg-auto bg-light text-center">会員の方はこちらから<%= link_to "ログイン", customer_session_path, class:"login" %>してください</h6>
   </div>
   <div class="row">
-    <h6 class="col-lg-auto bg-light text-center">こちらから<%= link_to "ゲストログイン", customers_guest_sign_in_path %>もできます</h6>
+    <h6 class="col-lg-auto bg-light text-center">こちらから<%= link_to "ゲストログイン", customers_guest_sign_in_path, class:"guest" %>もできます</h6>
   </div>
 
 </div>

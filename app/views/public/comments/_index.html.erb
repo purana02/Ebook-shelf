@@ -1,7 +1,7 @@
   <% review.comments.each do |comment| %>
-    <div class="accordion_header row">
+    <div class="accordion_header">
       <h6><%= comment.customer.nickname %>さんのコメント：</h6>
-      <div class="col-8">
+      <div>
         <p class="align-content-center"><%= comment.body %></p>
         <% if comment.customer_id != current_customer.id %>
           <div class="float-right">

@@ -4,17 +4,16 @@
       <%= render 'public/customers/sidebar' %>
     </div>
     <div class="col-md-8 offset-md-1" >
-      <div class="row">
-        <h3 class="ml-5 mr-2">課金一覧</h3>
-        <div class="col-md-2 ml-2">
+      <div class="text-center mt-3 mb-5">
+        <span class="h3 border-bottom border-dark mt-3 mb-2"><strong>課金一覧</strong></span>
+        <span class="h6">
           <%= link_to new_customer_billing_path do %>
             <i class="fas fa-plus-circle fa-2x" style="color: #4d3233;"></i>
           <% end %>
-        </div>
-        <div class="col-md-4"><%= render "sort_form" %></div>
+        </span>
       </div>
-      <div>
-        <%= render 'index', billings: @billings %>
-      </div>
+      <%= render "sort_form" %>
+      <%= render 'index', billings: @billings %>
+    </div>
   </div>
 </div>

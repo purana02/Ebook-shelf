@@ -4,11 +4,11 @@
       <%= render 'public/customers/sidebar' %>
     </div>
     <div class="col-md-8 offset-md-1" >
-      <div class="row">
-        <h2 class="mr-2">お気に入り一覧</h2>
-        <span class="h5 text-lowercase mt-2"> (全<%= @favorites.count %>件)</span>
+      <div class="text-center mt-3 mb-5">
+        <span class="h3 border-bottom border-dark mt-3 mb-2"><strong>お気に入り一覧</strong></span>
+        <span class="h5">(全<%= @favorites.count %>件)</span>
       </div>
-      <!--会員の所持している漫画一覧-->
+      <!--会員のお気に入りの漫画一覧-->
       <%= render 'index', favorites: @favorites %>
     </div>
   </div>

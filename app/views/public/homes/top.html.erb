@@ -5,12 +5,12 @@
       <%= render 'public/sites/sidebar', sites: @sites %>
     </div>
     <div class="col-md-8 offset-md-1" >
-      <div class="col-md-12 mt-3 mb-5">
-        <h2>人気コミックTop5</h2>
+      <div class="text-center mt-3 mb-5">
+        <span class="h3 border-bottom border-dark mt-3 mb-2"><strong>人気コミック<strong class="rank">Top5</strong></strong></span>
         <%= render 'index', comics: @comics %>
       </div>
-      <div class="col-md-12 mt-5">
-        <h2>レビュー新着順</h2>
+      <div class="text-center mt-3 mb-5">
+        <span class="h3 border-bottom border-dark mt-3 mb-2"><strong>レビュー新着順</strong></span>
         <%= render 'reviews', reviews: @reviews %>
       </div>
     </div>

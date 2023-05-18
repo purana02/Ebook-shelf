@@ -1,4 +1,3 @@
-<div class="col-md-10">
 <table class='table table-hover table-inverse'>
   <thead>
     <tr>
@@ -15,10 +14,15 @@
         <%= favorite.comic.title %>
         <% end %>
       </td>
-      <td><!--%= render 'public/reviews/average_star', comic: comic %--></td>
+      <td>
+        <% unless favorite.comic.reviews.empty? %>
+          <i class="fas fa-star" aria-hidden="true" style="color: #E4BC7F;"></i><%= favorite.comic.reviews.average(:evaluation).round(1) %>
+        <% else %>
+          レビューなし
+        <% end %>
+      </td>
       <td><%= favorite.comic.reviews.count %>件</td>
     </tr>
     <% end %>
   </tbody>
 </table>
-</div>
