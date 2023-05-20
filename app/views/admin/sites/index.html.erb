@@ -1,15 +1,15 @@
 <div class="container">
   <div class="row">
-    <h3 class="col-lg-auto bg-light text-center">サイト一覧・追加</h3>
+    <h3 class="col-lg-auto bg-light text-center mt-4">サイト一覧・追加</h3>
   </div>
   <%= render 'layouts/errors', obj: @site %>
   <div class="row">
-    <div class="col-lg-5">
+    <div class="col-lg-5 mt-3">
       <%= form_with model: @site, url: admin_sites_path, method: :post do |f| %>
         <div class="form-group row justify-content-center">
-          <label for="site" class="col-lg-3 col-form-label">サイト名</label>
+          <label for="site" class="col-lg-3 col-form-label text-align-center">サイト名</label>
           <div class="col-lg-auto"><%= f.text_field :name, placeholder: "サイト名" %></div>
-          <%= f.submit '新規登録', class: "btn btn-success" %>
+          <%= f.submit '新規登録', class: "btn btn-sm btn-success" %>
         </div>
       <% end %>
     </div>

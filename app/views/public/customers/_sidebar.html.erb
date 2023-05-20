@@ -14,13 +14,21 @@
       </tr>
       <% end %>
       <tr>
-        <td class="rounded-pill"><%= link_to 'コミック一覧', customer_path, class: "text-dark" %></td>
+        <td class="rounded-pill">
+          <%= link_to customer_path, class: "text-dark" do %>
+            <i class="fas fa-book"></i>My Comics
+          <% end %>
+        </td>
       </tr>
       <tr>
         <td class="rounded-pill"><%= link_to '課金一覧', customer_billings_path, class: "text-dark" %></td>
       </tr>
       <tr>
-        <td class="rounded-pill"><%= link_to 'お気に入り一覧', customer_favorites_path, class: "text-dark" %></td>
+        <td class="rounded-pill">
+          <%= link_to customer_favorites_path, class: "text-dark" do %>
+            <i class="fas fa-bookmark"></i>お気に入り一覧
+          <% end %>
+        </td>
       </tr>
     </tbody>
   </table>

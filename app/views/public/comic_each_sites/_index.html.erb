@@ -12,22 +12,22 @@
     </tr>
   </thead>
   <tbody>
-    <% comics_each.each do |each| %>
+    <% comics_each.each do |comic| %>
     <tr>
       <td>
-        <%= link_to comic_path(each.comic.id) do %>
-        <%= each.comic.title %>
+        <%= link_to comic_path(comic) do %>
+        <%= comic.title %>
         <% end %>
       </td>
       <td>
-        <% unless each.comic.reviews.empty? %>
-          <%= each.comic.reviews.average(:evaluation).round(1) %>
+        <% unless comic.reviews.empty? %>
+          <%= comic.reviews.average(:evaluation).round(1) %>
         <% else %>
           レビューなし
         <% end %>
       </td>
-      <td><%= each.comic.reviews.count %>件</td>
-      <td><i class="fas fa-star" aria-hidden="true" style="color: #ffbb29;"></i><%= each.comic.favorites.count %></td>
+      <td><%= comic.reviews.count %>件</td>
+      <td><i class="fas fa-star" aria-hidden="true" style="color: #ffbb29;"></i><%= comic.favorites.count %></td>
     </tr>
     <% end %>
   </tbody>

@@ -5,7 +5,10 @@
       <%= render 'admin/sites/sidebar', sites: @sites %>
     </div>
     <div class="col-md-8 offset-md-1" >
-      <h2>レビュー一覧<span class="h5 ml-2"> (全<%= @reviews.count %>件)</span></h2>
+      <div class="text-center mt-3 mb-5">
+        <span class="h3 border-bottom border-dark mt-3 mb-2"><strong>レビュー一覧</strong></span>
+        <span class="h5"> (全<%= @reviews.count %>件)</span>
+      </div>
       <%= render 'admin/reviews/index', reviews: @reviews %>
     </div>
   </div>

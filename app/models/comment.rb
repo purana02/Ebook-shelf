@@ -6,5 +6,7 @@ class Comment < ApplicationRecord
   validates :body, presence: true, length: { minimum: 3 }
   validates :is_reported, inclusion: { in: [true, false] }
   validates :is_publishing, inclusion: { in: [true, false] }
+  validates :customer_id, presence: true
+  validates :review_id, presence: true
 
 end

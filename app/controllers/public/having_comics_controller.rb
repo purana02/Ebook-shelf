@@ -1,4 +1,5 @@
 class Public::HavingComicsController < ApplicationController
+  before_action :authenticate_customer!
   def new
     @having_comic = HavingComic.new
     @genres = Genre.all

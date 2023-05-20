@@ -5,7 +5,10 @@
       <%= render 'admin/sites/sidebar', sites: @sites %>
     </div>
     <div class="col-md-8 offset-md-1" >
-      <h2>会員一覧</h2>
+      <div class="text-center mt-3 mb-5">
+        <span class="h3 border-bottom border-dark mt-3 mb-2"><strong>会員一覧</strong></span>
+        <span class="h5"> (全<%= @customers.count %>名)</span>
+      </div>
       <%= render 'admin/customers/index', customers: @customers %>
     </div>
   </div>

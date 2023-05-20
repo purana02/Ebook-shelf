@@ -1,4 +1,5 @@
 class Public::ComicsController < ApplicationController
+  before_action :authenticate_customer!, except: [:index, :search]
   def index
     @genres = Genre.all
     @sites = Site.all
@@ -42,25 +43,30 @@ class Public::ComicsController < ApplicationController
     @comic = Comic.find_or_create_by(comic_params)
     @having_comic.customer_id = current_customer.id
     @having_comic.comic_id = @comic.id
-    @having_comic.save!
-    input_tags = params[:comic][:name].split(',')
-    @comic.create_tags(input_tags)
-    if ComicEachSite.where(comic_id: @comic.id, site_id: @having_comic.site_id).exists?
-      flash[:notice] = "登録が完了しました"
-      redirect_to customer_path
-    else
-      each_site = ComicEachSite.new
-      each_site.site_id = @having_comic.site_id
-      each_site.comic_id = @having_comic.comic_id
-      if each_site.save
+    if @having_comic.save
+      input_tags = params[:comic][:name].split(',')
+      @comic.create_tags(input_tags)
+      if ComicEachSite.where(comic_id: @comic.id, site_id: @having_comic.site_id).exists?
         flash[:notice] = "登録が完了しました"
         redirect_to customer_path
       else
-        @genres = Genre.all
-        @sites = Site.all
-        render 'new'
+        each_site = ComicEachSite.new
+        each_site.site_id = @having_comic.site_id
+        each_site.comic_id = @having_comic.comic_id
+        if each_site.save
+          flash[:notice] = "登録が完了しました"
+          redirect_to customer_path
+        else
+          @genres = Genre.all
+          @sites = Site.all
+          render 'new'
+        end
       end
+    else
+      flash[:notice] = "登録に失敗しました。選択されていない項目があります。"
+      redirect_to new_comic_path
     end
+      
   end
 
   def search

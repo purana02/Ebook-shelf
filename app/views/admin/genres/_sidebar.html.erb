@@ -5,14 +5,16 @@
         <th class="h5 font-weight-bold rounded-pill">ジャンル一覧</th>
       </tr>
     </thead>
-    <% genres.each do |genre| %>
-    <tr>
-      <td class="rounded-pill">
-        <%= link_to admin_comics_path(genre_id: genre.id), class: "text-dark" do %>
-          <%= genre.name %>
-        <% end %>
-      </td>
-    </tr>
-    <% end %>
+    <tbody class="side">
+      <% genres.each do |genre| %>
+      <tr>
+        <td class="rounded-pill">
+          <%= link_to admin_comics_path(genre_id: genre.id), class: "text-dark" do %>
+            <%= genre.name %>
+          <% end %>
+        </td>
+      </tr>
+      <% end %>
+    </tbody>
   </table>
 </div>

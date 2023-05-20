@@ -1,4 +1,5 @@
 class Admin::ReportedsController < ApplicationController
+  before_action :authenticate_admin!
   def index
     @genres = Genre.all
     @sites = Site.all

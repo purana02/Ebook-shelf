@@ -5,14 +5,16 @@
         <th class="h5 font-weight-bold rounded-pill">サイト一覧</th>
       </tr>
     </thead>
-    <% sites.each do |site| %>
-    <tr>
-      <td class="rounded-pill">
-        <%= link_to admin_comic_each_site_path(site.id), class: "text-dark" do %>
-          <%= site.name %>
-        <% end %>
-      </td>
-    </tr>
-    <% end %>
+    <tbody class="side">
+      <% sites.each do |site| %>
+      <tr>
+        <td class="rounded-pill">
+          <%= link_to admin_comic_each_site_path(site.id), class: "text-dark" do %>
+            <%= site.name %>
+          <% end %>
+        </td>
+      </tr>
+      <% end %>
+    </tbody>
   </table>
 </div>

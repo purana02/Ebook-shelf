@@ -1,4 +1,5 @@
 class Admin::ReportedCommentsController < ApplicationController
+  before_action :authenticate_admin!
   def update
     @reported = ReportedComment.find(params[:id])
     if @reported.is_fixed == true

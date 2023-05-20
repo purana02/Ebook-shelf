@@ -9,12 +9,12 @@
   <tbody>
     <% havings.each do |having| %>
     <tr>
+      <td><%= having.created_at.strftime('%Y/%m/%d') %></td>
       <td>
         <%= link_to comic_path(having.comic_id) do %>
-        <%= having.created_at.strftime('%Y/%m/%d') %>
+          <%= having.comic.title %>
         <% end %>
       </td>
-      <td><%= having.comic.title %></td>
       <td><%= having.site.name %></td>
     </tr>
     <% end %>

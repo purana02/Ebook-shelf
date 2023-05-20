@@ -5,17 +5,19 @@
       <%= render 'admin/sites/sidebar', sites: @sites %>
     </div>
     <div class="col-md-8 offset-md-1" >
-      <div class="row">
-        <h3 class="col-lg-12 bg-light text-center">通報一覧</h3>
+      <div class="text-center mt-3 mb-5 bg-light">
+        <span class="h3 mt-3 mb-2"><strong>通報一覧</strong></span>
       </div>
-      <div class="mt-5 mb-5">
-        <h4>通報レビュー一覧<span class="h5 ml-2"> (全<%= @reporteds.count %>件)</span></h4>
-        <%= render 'admin/reporteds/index', reporteds: @reporteds %>
+      <div class="text-center mt-3 mb-2">
+        <span class="h4 border-bottom border-dark mt-3 mb-2"><strong>通報レビュー一覧</strong></span>
+        <span class="h6"> (全<%= @reporteds.count %>件)</span>
       </div>
-      <div class="mt-5 mb-5">
-        <h4>通報コメント一覧<span class="h5 ml-2"> (全<%= @reported_comments.count %>件)</span></h4>
-        <%= render 'admin/reported_comments/index', reported_comments: @reported_comments %>
+      <%= render 'admin/reporteds/index', reporteds: @reporteds %>
+      <div class="text-center mt-3 mb-2">
+        <span class="h4 border-bottom border-dark mt-3 mb-2"><strong>通報コメント一覧</strong></span>
+        <span class="h6"> (全<%= @reported_comments.count %>件)</span>
       </div>
+      <%= render 'admin/reported_comments/index', reported_comments: @reported_comments %>
     </div>
   </div>
 </div>

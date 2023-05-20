@@ -1,4 +1,5 @@
 class Admin::ReviewsController < ApplicationController
+  before_action :authenticate_admin!
   def show
     @genres = Genre.all
     @sites = Site.all

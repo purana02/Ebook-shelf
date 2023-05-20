@@ -1,4 +1,5 @@
 class Admin::CustomersController < ApplicationController
+   before_action :authenticate_admin!
   def index
     @genres = Genre.all
     @sites = Site.all

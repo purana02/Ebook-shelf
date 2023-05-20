@@ -1,4 +1,5 @@
 class Admin::SitesController < ApplicationController
+  before_action :authenticate_admin!
   def index
     @sites = Site.all
     @site = Site.new
@@ -28,13 +29,13 @@ class Admin::SitesController < ApplicationController
       render :edit
     end
   end
-  
+
   def destroy
     @site = Site.find(params[:id])
     @site.destroy
     flash[:notice] = "削除しました"
     redirect_to admin_sites_path
-  end  
+  end
 
  private
   def site_params

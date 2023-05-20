@@ -7,7 +7,9 @@ class Comic < ApplicationRecord
   has_many :reviews, dependent: :destroy
   has_many :favorites, dependent: :destroy
   belongs_to :genre
-
+  
+  validates :title, presence: true
+  validates :genre_id, presence: true
 #tagの保存
   def create_tags(input_tags)
     input_tags.each do |tag|                     # splitで分けたtagをeach文で取得する
@@ -48,7 +50,7 @@ class Comic < ApplicationRecord
     end
   end
 
-validates :title, presence: true
+
 
 #星平均の高い順に並び替え
 scope :star_rank, -> {find(Review.group(:comic_id).order(Arel.sql('avg(evaluation) desc')).limit(5).pluck(:comic_id))}
