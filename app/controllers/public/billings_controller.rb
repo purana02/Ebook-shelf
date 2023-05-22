@@ -2,9 +2,9 @@ class Public::BillingsController < ApplicationController
   before_action :authenticate_customer!
   def index
     if site_params.present?
-      @billings = current_customer.billings.where(site_id: params[:site_id]).order(created_at: :desc)
+      @billings = current_customer.billings.where(site_id: params[:site_id]).order(created_at: :desc).page(params[:page])
     else
-      @billings = current_customer.billings.all.order(created_at: :desc)
+      @billings = current_customer.billings.order(created_at: :desc).page(params[:page])
     end
   end
 

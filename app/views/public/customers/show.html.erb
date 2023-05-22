@@ -14,6 +14,9 @@
       </div>
       <!--会員の所持している漫画一覧-->
       <%= render 'index', havings: @havings %>
+      <div class="text-center mt-3 mb-5">
+        <%= paginate @havings %>
+      </div>
     </div>
   </div>
 </div>

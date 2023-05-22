@@ -3,14 +3,14 @@ class Admin::CustomersController < ApplicationController
   def index
     @genres = Genre.all
     @sites = Site.all
-    @customers = Customer.all
+    @customers = Customer.page(params[:page])
   end
 
   def show
     @customer = Customer.find(params[:id])
     @genres = Genre.all
     @sites = Site.all
-    @reviews = Review.where(customer_id: params[:id]).order(created_at: :desc)
+    @reviews = Review.where(customer_id: params[:id]).order(created_at: :desc).page(params[:page])
   end
 
   def edit

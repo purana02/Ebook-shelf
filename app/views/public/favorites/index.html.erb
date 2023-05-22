@@ -10,6 +10,9 @@
       </div>
       <!--会員のお気に入りの漫画一覧-->
       <%= render 'index', favorites: @favorites %>
+      <div class="text-center mt-3 mb-5">
+        <%= paginate @favorites %>
+      </div>
     </div>
   </div>
 </div>

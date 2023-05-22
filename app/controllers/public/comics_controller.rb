@@ -6,17 +6,17 @@ class Public::ComicsController < ApplicationController
     @sort_list = Comic.sort_list
     if params[:genre_id]
       @genre = Genre.find(params[:genre_id])
-      @comics = @genre.comics.all
+      @comics = @genre.comics.all.page(params[:page])
       @comics_all = @genre.comics.all
     elsif params[:tag_id]
       @tag = Tag.find(params[:tag_id])
-      @comics = @tag.comics.all
+      @comics = @tag.comics.all.page(params[:page])
       @comics_all = @tag.comics.all
     else
       if sort_params.present?
-        @comics = Comic.sort_comics(sort_params)
+        @comics = Comic.sort_comics(sort_params).page(params[:page])
       else
-        @comics = Comic.all
+        @comics = Comic.all.page(params[:page])
       end
       @comics_all = Comic.all
     end
@@ -28,7 +28,7 @@ class Public::ComicsController < ApplicationController
     @comic = Comic.find(params[:id])
     @tags = @comic.tags.all
     @each_sites = @comic.sites.all
-    @reviews = @comic.reviews.all
+    @reviews = @comic.reviews.page(params[:page]).per(10)
   end
 
   def new

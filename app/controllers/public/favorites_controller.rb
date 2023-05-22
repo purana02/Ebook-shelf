@@ -1,7 +1,7 @@
 class Public::FavoritesController < ApplicationController
   before_action :authenticate_customer!
   def index
-    @favorites = current_customer.favorites.all
+    @favorites = current_customer.favorites.page(params[:page])
   end
 
   def create

@@ -4,6 +4,6 @@ class Admin::ComicEachSitesController < ApplicationController
     @genres = Genre.all
     @sites = Site.all
     @site = Site.find(params[:id])
-    @comics_each = ComicEachSite.where(site_id: params[:id])
+    @comics_each = ComicEachSite.where(site_id: params[:id]).page(params[:page])
   end
 end

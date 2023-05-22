@@ -7,6 +7,9 @@
     <div class="col-md-8 offset-md-1" >
       <h2>Comics</h2>
       <%= render 'index', {comics_each: @comics_each, site: @site } %>
+      <div class="text-center mt-3 mb-5">
+        <%= paginate @comic_each %>
+      </div>
     </div>
   </div>
 </div>

@@ -10,6 +10,9 @@
         <span class="h5"> (全<%= @customers.count %>名)</span>
       </div>
       <%= render 'admin/customers/index', customers: @customers %>
+      <div class="text-center mt-3 mb-5">
+        <%= paginate @customers %>
+      </div>
     </div>
   </div>
 </div>

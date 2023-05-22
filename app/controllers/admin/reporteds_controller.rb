@@ -3,8 +3,8 @@ class Admin::ReportedsController < ApplicationController
   def index
     @genres = Genre.all
     @sites = Site.all
-    @reporteds = Reported.all.order(created_at: :desc)
-    @reported_comments = ReportedComment.all.order(created_at: :desc)
+    @reporteds = Reported.all.order(created_at: :desc).page(params[:page])
+    @reported_comments = ReportedComment.all.order(created_at: :desc).page(params[:page])
   end
 
   def update

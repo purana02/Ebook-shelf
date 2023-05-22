@@ -14,6 +14,9 @@
       </div>
       <%= render "sort_form" %>
       <%= render 'index', billings: @billings %>
+      <div class="text-center mt-3 mb-5">
+        <%= paginate @billings %>
+      </div>
     </div>
   </div>
 </div>

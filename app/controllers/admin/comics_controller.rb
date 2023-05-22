@@ -5,11 +5,11 @@ class Admin::ComicsController < ApplicationController
     @sites = Site.all
     if params[:genre_id]
       @genre = Genre.find(params[:genre_id])
-      @comics = @genre.comics.all
+      @comics = @genre.comics.page(params[:page])
       @comics_all = @genre.comics.all
     else
       @comics_all = Comic.all
-      @comics = Comic.all
+      @comics = Comic.page(params[:page])
     end
   end
 
@@ -19,6 +19,6 @@ class Admin::ComicsController < ApplicationController
     @comic = Comic.find(params[:id])
     @tags = @comic.tags.all
     @each_sites = @comic.sites.all
-    @reviews = @comic.reviews.all
+    @reviews = @comic.reviews.page(params[:page]).per(10)
   end
 end

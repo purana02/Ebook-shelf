@@ -4,7 +4,7 @@ class  Public::ComicEachSitesController < ApplicationController
     @sites = Site.all
     @site = Site.find(params[:id])
     @sort_list = Comic.sort_list
-    @comics_each = Comic.includes(:comic_each_sites).where(comic_each_sites: { site_id: params[:id]})
+    @comics_each = Comic.includes(:comic_each_sites).where(comic_each_sites: { site_id: params[:id]}).page(params[:page])
   end
 
   private
