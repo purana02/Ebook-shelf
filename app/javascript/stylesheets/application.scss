@@ -50,7 +50,7 @@ tr, .confirm{
 .navbar-dark .navbar-nav .nav-link, .welcome{
   color:#bac8c6;
 }
-.spoiler-true{
+.spoiler-true, a.reported.small {
   color:#c41a30;
 }
 
@@ -75,7 +75,6 @@ tr, .confirm{
 }
 .s_07 .accordion_one .accordion_header {
   border-bottom: 1px solid #c39c89;
-  font-size: 20px;
   padding: 30px 5%;
   position: relative;
   z-index: +1;

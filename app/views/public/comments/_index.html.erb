@@ -1,13 +1,25 @@
   <% review.comments.each do |comment| %>
+  <% if comment.is_publishing == true %>
     <div class="accordion_header">
       <h6><%= comment.customer.nickname %>さんのコメント：</h6>
       <div>
         <p class="align-content-center"><%= comment.body %></p>
         <% if comment.customer_id != current_customer.id %>
           <div class="float-right">
-            <%= link_to "コメントを報告する", confirm_reported_comic_review_comment_path(review.comic_id, review, comment.id), class:"small"  %>
+            <% if comment.reported_comments.where("(comment_id = ?) and (customer_id = ?)", comment.id, current_customer.id).exists? %>
+                <a class="reported small">コメント報告済み</a>
+              <% else %>
+                <%= link_to "コメントを報告する", confirm_reported_comic_review_comment_path(review.comic_id, review, comment.id), class:"reported small"  %>
+              <% end %>
           </div>
         <% end %>
       </div>
     </div>
+  <% else %>
+     <div class="accordion_one">
+      <div class="accordion_header d-flex justify-content-start title">
+        <h5 class="mr-3 delete">この投稿は管理者によって削除されました</h5></h5>
+      </div>
+    </div>
+  <% end %>
   <% end %>

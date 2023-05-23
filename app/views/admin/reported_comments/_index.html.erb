@@ -13,13 +13,13 @@
     <% reported_comments.each do |reported_comment| %>
     <tr>
       <td>
-        <%= link_to admin_comic_review_path(reported_comment.review.comic_id,reported_comment.review_id) do %>
+        <%= link_to admin_comment_path(reported_comment.comment_id) do %>
           <%= reported_comment.created_at.strftime('%Y/%m/%d') %>
         <% end %>
       </td>
       <td><%= reported_comment.customer.nickname %></td>
       <td><%= reported_comment.id %></td>
-      <td><%= reported_comment.comment.nickname %></td>
+      <td><%= reported_comment.comment.customer.nickname %></td>
       <td>
         <% if reported_comment.comment.is_publishing == false %>
           <div class="text-secondary"><%= "非公開" %></div>

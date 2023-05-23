@@ -35,7 +35,7 @@ class Public::CommentsController < ApplicationController
     @review = Review.find(params[:review_id])
     @comic = Comic.find(params[:comic_id])
     if @comment.update(is_reported: true)
-      reported = ReportedComments.new
+      reported = ReportedComment.new
       reported.customer_id = current_customer.id
       reported.comment_id = params[:id]
       reported.save

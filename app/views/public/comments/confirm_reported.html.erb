@@ -15,11 +15,11 @@
     <div class="col-md-6 mx-auto mt-5 border border-info">
       <div>
         <p><%= @review.customer.nickname %>さんのレビュー</p>
-        <p>レビュー内容：<%= @review.body %></p>
+        <p class="text-break">レビュー内容：<%= @review.body %></p>
       </div>
       <p class="text-center"><strong>---上記レビューに対する<%= @comment.customer.nickname %>さんのコメント---</strong></p>
       <div>
-        <p>コメント内容：<%= @review.body %></p>
+        <p class="text-break">コメント内容：<%= @comment.body %></p>
       </div>
     </div>
   </div>
@@ -34,7 +34,7 @@
   <div class="row">
     <div class="col-md-7 mx-auto mt-5 mb-5 border border-danger">
       <h5 class="text-center"><i class="fas fa-exclamation-triangle"></i><strong>ご注意</strong></h3>
-      <p class="text-center text-black">
+      <p class="text-break">
         コメントの報告は、不適切だと思うコメントを管理者側に報告できる機能です。
         以下のようなコメントが報告された場合、コメントの投稿者や利用者に事前の告知なく削除するなどの措置を取らせていただく場合があります。
       </p>

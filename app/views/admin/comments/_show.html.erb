@@ -9,10 +9,10 @@
       </div>
     </div>
     <div class="row">
-      <div class="col-lg-12 mx-auto mt-3 border border-info">
+      <div class="col-lg-12 mx-auto mt-3 border border-info bg-light">
         <div>
-          <p><%= @comment.review.customer.nickname %>さんのレビュー</p>
-          <p>レビュー内容：<%= @comment.review.body %></p>
+          <p class="text-break"><%= @comment.review.customer.nickname %>さんのレビュー</p>
+          <p class="text-break">レビュー内容：<%= @comment.review.body %></p>
         </div>
         <p class="text-center"><strong>---上記レビューに対する<%= @comment.customer.nickname %>さんのコメント---</strong></p>
         <div>

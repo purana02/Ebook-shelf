@@ -12,11 +12,11 @@
     </div>
   </div>
   <div class="row">
-    <div class="col-md-6 mx-auto mt-5 border border-info">
+    <div class="col-md-6 mx-auto mt-5 border border-info bg-light">
       <p class="text-center"><strong><%= @review.customer.nickname %>さんのレビュー</strong></p>
       <div>
-        <h6>レビュータイトル：<%= @review.title %></h6>
-        <p>レビュー内容：<%= @review.body %></p>
+        <h6 class="text-break">レビュータイトル：<%= @review.title %></h6>
+        <p class="text-break">レビュー内容：<%= @review.body %></p>
       </div>
     </div>
   </div>
@@ -29,9 +29,9 @@
     </div>
   </div>
   <div class="row">
-    <div class="col-md-7 mx-auto mt-5 mb-5 border border-danger">
+    <div class="col-md-7 mx-auto mt-5 mb-5 border border-danger bg-light">
       <h5 class="text-center"><i class="fas fa-exclamation-triangle"></i><strong>ご注意</strong></h3>
-      <p class="text-center text-black">
+      <p class="text-brake">
         レビューの報告は、不適切だと思うレビューを管理者側に報告できる機能です。
         以下のようなレビューが報告された場合、レビューの投稿者や利用者に事前の告知なく削除するなどの措置を取らせていただく場合があります。
       </p>
