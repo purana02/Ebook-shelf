@@ -1,12 +1,10 @@
 <% review.comments.each do |comment| %>
-  <tr>
-    <td>
-      <%= link_to admin_comment_path(comment) do %>
-        <%= comment.customer.nickname %>さんのコメント
-      <% end %>
-    </td>
-    <td colspan="4">
-      <%= comment.body %>
+  <div class="accordion_header">
+    <%= link_to admin_comment_path(comment) do %>
+      <h6><%= comment.customer.nickname %>さんのコメント</h6>
+    <% end %>
+    <div>
+      <p class="align-content-center"><%= comment.body %></p>
       <% if comment.is_publishing == false %>
         <div class="float-right">
           <p class="text-success"><strong>非公開</strong></p>
@@ -16,6 +14,6 @@
           <p class="text-danger"><strong>通報されています</strong></p>
         </div>
       <% end %>
-    </td>
-  </tr>
+    </div>
+  </div>
 <% end %>
