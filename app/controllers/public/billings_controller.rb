@@ -38,6 +38,12 @@ class Public::BillingsController < ApplicationController
     end
   end
 
+  def destroy
+    @billing = Billing.find(params[:id])
+    @billing.destroy
+    redirect_to customer_billings_path
+  end
+
   private
   def billing_params
     params.require(:billing).permit(:site_id, :price, :post_date)
