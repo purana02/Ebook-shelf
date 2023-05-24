@@ -1,99 +1,97 @@
 <header>
   <nav class="navbar navbar-expand-lg navbar-dark">
     <%= link_to root_path do %>
-      <%= image_tag "images/Ebook-shelf.png", size: '100x100' %>
+      <%= image_tag asset_path("Ebook-shelf.png"), size: '100x100' %>
     <% end %>
-
-      <div class="d-flex justify-content-center">
-        <div class="welcome">
-          <% if customer_signed_in? %>
-            ようこそ、<%= current_customer.nickname %>さん!
+    <div class="d-flex justify-content-center">
+      <div class="welcome">
+        <% if customer_signed_in? %>
+          ようこそ、<%= current_customer.nickname %>さん!
+        <% end %>
+      </div>
+    </div>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav ml-auto">
+        <% if customer_signed_in? %>
+          <li class="nav-item">
+            <%= link_to customer_path, class: 'nav-link' do %>
+              <i class="far fa-address-book" style="color: #c41a30;"></i>マイページ
+            <% end %>
+          </li>
+          <li class="nav-item">
+            <%=  link_to comics_path, class: 'nav-link' do %>
+              <i class="fas fa-book-open" style="color: #c41a30;"></i>漫画一覧
+            <% end %>
+          </li>
+          <li class="nav-item">
+            <%=  link_to customer_billings_path, class: 'nav-link' do%>
+              <i class="far fa-credit-card" style="color: #c41a30;"></i>課金一覧
+            <% end %>
+          </li>
+          <li class="nav-item">
+            <%= link_to destroy_customer_session_path, method: :delete,class: 'nav-link' do%>
+              <i class="fas fa-sign-out-alt"></i>ログアウト
+            <% end %>
+          </li>
+        <% elsif admin_signed_in? %>
+          <li class="nav-item">
+            <%=  link_to "漫画一覧", admin_comics_path, class: 'nav-link'%>
+          </li>
+          <li class="nav-item">
+            <%= link_to "会員一覧",admin_customers_path,class: 'nav-link' %>
+          </li>
+          <li class="nav-item">
+            <%=  link_to "サイト一覧", admin_sites_path, class: 'nav-link' %>
+          </li>
+          <li class="nav-item">
+            <%=  link_to "ジャンル一覧", admin_genres_path, class: 'nav-link' %>
+          </li>
+          <li class="nav-item">
+            <%=  link_to "レビュー一覧", admin_root_path, class: 'nav-link' %>
+          </li>
+          <li class="nav-item">
+            <%=  link_to "通報一覧", admin_reporteds_path, class: 'nav-link' %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: 'nav-link' %>
+          </li>
+        <% else %>
+          <li class="nav-item">
+            <%= link_to "About", about_path,class: 'nav-link' %>
+          </li>
+          <li class="nav-item">
+            <%=  link_to comics_path, class: 'nav-link' do %>
+              <i class="fas fa-book" style="color: #c41a30;"></i>漫画一覧
+            <% end %>
+          </li>
+          <li class="nav-item">
+            <%= link_to new_customer_registration_path, class: 'nav-link' do %>
+              <i class="fas fa-user-plus"></i>新規登録
+            <% end %>
+          </li>
+          <li class="nav-item">
+            <%= link_to new_customer_session_path ,class: 'nav-link' do%>
+              <i class="fas fa-sign-in-alt"></i>ログイン
+            <% end %>
+          </li>
+          <li class="nav-item">
+            <%=  link_to customers_guest_sign_in_path, class: 'nav-link', method: :post do%>
+              <i class="fas fa-user"></i>ゲストログイン
+            <% end %>
+          </li>
+        <% end %>
+        <div class="form-inline my-2 my-lg-0">
+          <%= form_with url: search_result_comics_path, method: :get, local: true do |f| %>
+            <%= f.text_field :keyword, class:"form-control input-group-prepend bg-light", placeholder:"タグやキーワードで検索できます" %>
+            <%= button_tag type: "submit", class:"btn btn-light" do %>
+              <i class="fas fa-search fa-rotate-90" style="color: #c41a30;"></i>
+            <% end %>
           <% end %>
         </div>
-      </div>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-
-      <div class="collapse navbar-collapse" id="navbarNavDropdown">
-        <ul class="navbar-nav ml-auto">
-          <% if customer_signed_in? %>
-            <li class="nav-item">
-              <%= link_to customer_path, class: 'nav-link' do %>
-                <i class="far fa-address-book" style="color: #c41a30;"></i>マイページ
-              <% end %>
-            </li>
-            <li class="nav-item">
-              <%=  link_to comics_path, class: 'nav-link' do %>
-               <i class="fas fa-book-open" style="color: #c41a30;"></i>漫画一覧
-              <% end %>
-            </li>
-            <li class="nav-item">
-              <%=  link_to customer_billings_path, class: 'nav-link' do%>
-                <i class="far fa-credit-card" style="color: #c41a30;"></i>課金一覧
-              <% end %>
-            </li>
-            <li class="nav-item">
-              <%= link_to destroy_customer_session_path, method: :delete,class: 'nav-link' do%>
-                <i class="fas fa-sign-out-alt"></i>ログアウト
-              <% end %>
-            </li>
-          <% elsif admin_signed_in? %>
-            <li class="nav-item">
-              <%=  link_to "漫画一覧", admin_comics_path, class: 'nav-link'%>
-            </li>
-            <li class="nav-item">
-              <%= link_to "会員一覧",admin_customers_path,class: 'nav-link' %>
-            </li>
-            <li class="nav-item">
-              <%=  link_to "サイト一覧", admin_sites_path, class: 'nav-link' %>
-            </li>
-            <li class="nav-item">
-              <%=  link_to "ジャンル一覧", admin_genres_path, class: 'nav-link' %>
-            </li>
-            <li class="nav-item">
-              <%=  link_to "レビュー一覧", admin_root_path, class: 'nav-link' %>
-            </li>
-            <li class="nav-item">
-              <%=  link_to "通報一覧", admin_reporteds_path, class: 'nav-link' %>
-            </li>
-            <li class="nav-item">
-              <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: 'nav-link' %>
-            </li>
-          <% else %>
-            <li class="nav-item">
-              <%= link_to "About", about_path,class: 'nav-link' %>
-            </li>
-            <li class="nav-item">
-              <%=  link_to comics_path, class: 'nav-link' do %>
-               <i class="fas fa-book" style="color: #c41a30;"></i>漫画一覧
-              <% end %>
-            </li>
-            <li class="nav-item">
-              <%= link_to new_customer_registration_path, class: 'nav-link' do %>
-                <i class="fas fa-user-plus"></i>新規登録
-              <% end %>
-            </li>
-            <li class="nav-item">
-              <%= link_to new_customer_session_path ,class: 'nav-link' do%>
-                <i class="fas fa-sign-in-alt"></i>ログイン
-              <% end %>
-            </li>
-            <li class="nav-item">
-              <%=  link_to customers_guest_sign_in_path, class: 'nav-link', method: :post do%>
-                <i class="fas fa-user"></i>ゲストログイン
-              <% end %>
-            </li>
-          <% end %>
-          <div class="form-inline my-2 my-lg-0">
-            <%= form_with url: search_result_comics_path, method: :get, local: true do |f| %>
-              <%= f.text_field :keyword, class:"form-control input-group-prepend bg-light", placeholder:"タグやキーワードで検索できます" %>
-              <%= button_tag type: "submit", class:"btn btn-light" do %>
-                <i class="fas fa-search fa-rotate-90" style="color: #c41a30;"></i>
-              <% end %>
-            <% end %>
-          </div>
-        </ul>
-      </div>
+      </ul>
+    </div>
   </nav>
 </header>
