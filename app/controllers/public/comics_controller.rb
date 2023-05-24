@@ -14,7 +14,8 @@ class Public::ComicsController < ApplicationController
       @comics_all = @tag.comics.all
     else
       if sort_params.present?
-        @comics = Comic.sort_comics(sort_params).page(params[:page])
+        @comics = Comic.sort_comics(sort_params)
+        @comics = Kaminari.paginate_array(@comics).page(params[:page])
       else
         @comics = Comic.all.page(params[:page])
       end
@@ -66,7 +67,7 @@ class Public::ComicsController < ApplicationController
       flash[:notice] = "登録に失敗しました。選択されていない項目があります。"
       redirect_to new_comic_path
     end
-      
+
   end
 
   def search

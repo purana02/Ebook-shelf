@@ -50,11 +50,11 @@ tr, .confirm{
 .navbar-dark .navbar-nav .nav-link, .welcome{
   color:#bac8c6;
 }
-.spoiler-true, a.reported.small {
+.spoiler-true, a.reported.small, .text-reported {
   color:#c41a30;
 }
 
-.spoiler-false{
+.spoiler-false, .text-muted{
   color:#7f5072;
 }
 
