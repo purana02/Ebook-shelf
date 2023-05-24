@@ -11,6 +11,16 @@ Admin.create!(
   password: 'adminadmin'
 )
 
+Customer.create!(
+ [
+  {email: 'olivia@example.com', nickname: 'Olivia', password: 'olivia'},
+  {email: 'james@example.com', nickname: 'James', password: 'james!'},
+  {email: 'tom@example.com', nickname: 'トム', password: 'tomtom'},
+  {email: 'happy@example.com', nickname: 'happy', password: 'happy!'},
+  email: 'kashiwa@example.com', nickname: '柏', password: 'kashiwa'
+  ]
+ )
+
 Genre.create!(
  [
    {name: '少年/青年'},
