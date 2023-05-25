@@ -5,7 +5,7 @@
 <table class='table table-hover table-inverse'>
   <thead>
     <tr>
-      <th>タイトル</th>
+      <th>　　　タイトル　　　</th>
       <th>平均</th>
       <th>レビュー数</th>
       <th>お気に入り登録数</th>
@@ -30,7 +30,7 @@
           <% unless comic.reviews.empty? %>
             <%= comic.reviews.average(:evaluation).round(1) %>
           <% else %>
-            レビューなし
+            ー
           <% end %>
         </td>
         <td><%= comic.reviews.count %>件</td>
@@ -49,7 +49,7 @@
               <% unless tag.reviews.empty? %>
                 <%= tag.reviews.average(:evaluation).round(1) %>
               <% else %>
-                レビューなし
+                ー
               <% end %>
             </td>
             <td><%= tag.reviews.count %>件</td>

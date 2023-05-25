@@ -6,7 +6,7 @@
     </div>
     <div class="col-md-8 offset-md-1" >
       <%= render 'index', {comics: @comics, comics_all: @comics_all, genre: @genre, tag: @tag} %>
-      <div class="text-center mt-3 mb-5">
+      <div class="d-flex justify-content-center mt-3 mb-5">
         <%= paginate @comics %>
       </div>
     </div>

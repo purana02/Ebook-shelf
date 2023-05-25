@@ -23,7 +23,7 @@ class Comic < ApplicationRecord
     registered_tags = tags.pluck(:name) # すでに紐付けれらているタグを配列化する
     new_tags = input_tags - registered_tags # 追加されたタグ
     new_tags.each do |tag|
-      new_tag = Tag.find_or_created_by(name: tag)
+      new_tag = Tag.find_or_create_by(name: tag)
       tags << new_tag
     end
   end
@@ -63,7 +63,7 @@ scope :star_rank, -> {find(Review.group(:comic_id).order(Arel.sql('avg(evaluatio
     when 'favorites'
       find(Favorite.group(:comic_id).order(Arel.sql('count(comic_id) desc')).pluck(:comic_id))
     when 'review'
-      find(Review.group(:comic_id).order(Arel.sql('count(comic_id) asc')).pluck(:comic_id))
+      find(Review.group(:comic_id).order(Arel.sql('count(comic_id) desc')).pluck(:comic_id))
     when 'evaluation'
       find(Review.group(:comic_id).order(Arel.sql('avg(evaluation) desc')).pluck(:comic_id))
     else

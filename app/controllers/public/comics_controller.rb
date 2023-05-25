@@ -46,7 +46,7 @@ class Public::ComicsController < ApplicationController
     @having_comic.comic_id = @comic.id
     if @having_comic.save
       input_tags = params[:comic][:name].split(',')
-      @comic.create_tags(input_tags)
+      @comic.update_tags(input_tags)
       if ComicEachSite.where(comic_id: @comic.id, site_id: @having_comic.site_id).exists?
         flash[:notice] = "登録が完了しました"
         redirect_to customer_path

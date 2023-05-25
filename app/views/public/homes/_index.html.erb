@@ -1,7 +1,7 @@
 <table class='table table-hover table-inverse mt-3'>
   <thead>
     <tr>
-      <th>タイトル</th>
+      <th>　　　タイトル　　　</th>
       <th>平均</th>
       <th>レビュー数</th>
       <th>お気に入り登録数</th>
@@ -16,11 +16,7 @@
         <% end %>
       </td>
       <td>
-        <% unless comic.reviews.empty? %>
-          <i class="fas fa-star" aria-hidden="true" style="color: #E4BC7F;" ></i><%= comic.reviews.average(:evaluation).round(1) %>
-        <% else %>
-          レビューなし
-        <% end %>
+        <i class="fas fa-star" aria-hidden="true" style="color: #E4BC7F;" ></i><%= comic.reviews.average(:evaluation).round(1) %>
       </td>
       <td><%= comic.reviews.count %>件</td>
       <td><i class="fas fa-star" aria-hidden="true" style="color: #E4BC7F;"></i><%= comic.favorites.count %>件</td>

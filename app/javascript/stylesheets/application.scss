@@ -24,6 +24,10 @@ a:hover{
 td{
   border-collapse: collapse;
   border-bottom: 1px #c39c89 solid ;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  max-width: 0;
 }
 
 th{
@@ -181,4 +185,3 @@ tr, .confirm{
     padding: 15px 60px 15px 15px;
   }
 }
-
