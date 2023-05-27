@@ -4,7 +4,6 @@
       <th>投稿日</th>
       <th>投稿者</th>
       <th>コミックタイトル</th>
-      <th>レビュータイトル</th>
       <th>星</th>
       <th>ネタバレ</th>
     </tr>
@@ -19,7 +18,6 @@
       </td>
       <td><%= review.customer.nickname %></td>
       <td><%= review.comic.title %></td>
-      <td><%= review.title %></td>
       <td><i class="fas fa-star" aria-hidden="true" style="color: #E4BC7F;"></i><%= review.evaluation %></td>
       <td>
         <% if review.exists_spoiler == true %>

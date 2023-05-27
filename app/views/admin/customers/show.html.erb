@@ -4,9 +4,9 @@
       <%= render 'admin/genres/sidebar', genres: @genres %>
       <%= render 'admin/sites/sidebar', sites: @sites %>
     </div>
-    <div class="col-md-8 offset-md-1" >
+    <div class="col-lg-8 offset-md-1" >
       <div class="row">
-        <h3 class="col-lg-12　text-center bg-side"><%= @customer.nickname %>さんの詳細ページ</h3>
+        <h3 class="col-lg-12　text-center bg-side">　<%= @customer.nickname %>さんの詳細ページ　</h3>
          <div class="d-grid gap-2 d-md-block">
           <div class="btn btn-success ml-3">
             <%= link_to "編集する", edit_admin_customer_path(@customer), class: 'text-light text-decoration-none' %>
