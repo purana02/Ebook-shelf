@@ -136,9 +136,32 @@ HavingComic.create!(
   {comic_id: 62, site_id: 16, customer_id: 3},{comic_id: 63, site_id: 16, customer_id: 3}
   ]
  )
- 
+
 Review.create!(
  [
-  
+  {customer_id: 1, comic_id: 1, title: "a", body: "aa", evaluation: 4.0, exists_spoiler: false, is_reported: false, is_publishing: true},
+  {customer_id: 1, comic_id: 1, title: "test", body: "test", evaluation: 1.0, exists_spoiler: true, is_reported: true, is_publishing: true},
+  {customer_id: 1, comic_id: 23, title: "test", body: "test", evaluation: 4.0, exists_spoiler: false, is_reported: false, is_publishing: true},
+  {customer_id: 1, comic_id: 6, title: "面白かった", body: "面白かった", evaluation: 4.0, exists_spoiler: true, is_reported: false, is_publishing: true},
+  {customer_id: 1, comic_id: 2, title: "面白かった", body: "", evaluation: 5.0, exists_spoiler: false, is_reported: false, is_publishing: true},
+  {customer_id: 1, comic_id: 21, title: "面白かった", body: "恋に無駄口の作者の作品", evaluation: 5.0, exists_spoiler: false, is_reported: false, is_publishing: true},
+  {customer_id: 2, comic_id: 6, title: "面白かった", body: "", evaluation: 4.0, exists_spoiler: false, is_reported: false, is_publishing: true},
+  {customer_id: 2, comic_id: 13, title: "面白かった", body: "休載中です。続きが読みたい", evaluation: 5.0, exists_spoiler: true, is_reported: false, is_publishing: true},
+  {customer_id: 2, comic_id: 8, title: "面白かった", body: "おすすめ", evaluation: 5.0, exists_spoiler: false, is_reported: false, is_publishing: true},
+  {customer_id: 3, comic_id: 8, title: "面白かった", body: "一気に読んでしまった", evaluation: 5.0, exists_spoiler: false, is_reported: false, is_publishing: true},
+  {customer_id: 3, comic_id: 16, title: "test", body: "", evaluation: 4.0, exists_spoiler: false, is_reported: false, is_publishing: true},
+  {customer_id: 3, comic_id: 43, title: "面白かった", body: "面白い", evaluation: 5.0, exists_spoiler: false, is_reported: false, is_publishing: true},
+  {customer_id: 4, comic_id: 4, title: "test", body: "test", evaluation: 4.0, exists_spoiler: false, is_reported: false, is_publishing: true},
+  {customer_id: 4, comic_id: 7, title: "test", body: "面白い。早く続きが読みたい", evaluation: 5.0, exists_spoiler: false, is_reported: false, is_publishing: true},
+  {customer_id: 4, comic_id: 20, title: "面白かった", body: "面白かった", evaluation: 5.0, exists_spoiler: false, is_reported: false, is_publishing: true}
+  ]
+ )
+
+Comment.create!(
+ [
+  {review_id: 5, customer_id: 8, body: "それな", is_reported: true, is_publishing: false},
+  {review_id: 4, customer_id: 6, body: "aaaa", is_reported: true, is_publishing: false},
+  {review_id: 6, customer_id: 1, body: "aaaaa", is_reported: false, is_publishing: true},
+  {review_id: 10, customer_id: 2, body: "全て面白い", is_reported: false, is_publishing: true},
   ]
  )
