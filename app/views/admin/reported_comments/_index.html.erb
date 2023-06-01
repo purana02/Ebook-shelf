@@ -1,42 +1,15 @@
-<table class='table table-hover table-inverse'>
-  <thead>
-    <tr>
-      <th>通報日</th>
-      <th>通報者</th>
-      <th>ID</th>
-      <th>コメント投稿者</th>
-      <th>ステータス</th>
-      <th>対応状況</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% reported_comments.each do |reported_comment| %>
-    <tr>
-      <td>
-        <%= link_to admin_comment_path(reported_comment.comment_id) do %>
-          <%= reported_comment.created_at.strftime('%Y/%m/%d') %>
-        <% end %>
-      </td>
-      <td><%= reported_comment.customer.nickname %></td>
-      <td><%= reported_comment.id %></td>
-      <td><%= reported_comment.comment.customer.nickname %></td>
-      <td>
-        <% if reported_comment.comment.is_publishing == false %>
-          <div class="text-secondary"><%= "非公開" %></div>
-        <% elsif reported_comment.comment.is_reported == true %>
-          <div class="text-danger"><%= "通報" %></div>
-        <% else %>
-          <div class="text-muted"><%= "ー" %></div>
-        <% end %>
-      </td>
-      <td>
-        <% if reported_comment.is_fixed == true %>
-          <%= link_to "対応済み", admin_reported_comment_path(reported_comment), method: :patch, class:"btn btn-sm btn-outline-success" %>
-        <% else %>
-          <%= link_to "未対応", admin_reported_comment_path(reported_comment), method: :patch, class:"btn btn-sm btn-outline-danger" %>
-        <% end %>
-      </td>
-    </tr>
-    <% end %>
-  </tbody>
-</table>
+<div class="container px-5 px-sm-0">
+  <div class="row">
+    <div class="col-md-3">
+      <%= render 'admin/genres/sidebar', genres: @genres %>
+      <%= render 'admin/sites/sidebar', sites: @sites %>
+    </div>
+    <div class="col-md-8 offset-md-1" >
+      <div class="text-center mt-3 mb-5">
+        <span class="h3 border-bottom border-dark mt-3 mb-2"><strong>レビュー一覧</strong></span>
+        <span class="h5"> (全<%= @reviews.count %>件)</span>
+      </div>
+      <%= render 'admin/reviews/index', reviews: @reviews %>
+    </div>
+  </div>
+</div>

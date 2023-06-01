@@ -11,6 +11,8 @@ class Public::CommentsController < ApplicationController
   def create
     @comment = Comment.new(comment_params)
     @comment.customer_id = current_customer.id
+    @comment.score = Language.get_data(comment_params[:body])
+    @comment.magnitude = Language.get_magnitude(comment_params[:body])
     @comment.review_id = params[:review_id]
     if @comment.save
       flash[:notice] = "コメントを投稿しました"

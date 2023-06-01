@@ -17,6 +17,10 @@
       <div class="col-3"><%= review.title %></div>
     </div>
     <div class="row mt-2">
+      <div class="col-3">感情スコア</div>
+      <div class="col-9">スコア：<%= review.score %>　感情幅：<%= review.magnitude %></div>
+    </div>
+    <div class="row mt-2">
       <div class="col-3">投稿内容　</div>
       <div class="col-9 border border-info text-break bg-light"><%= review.body %></div>
     </div>

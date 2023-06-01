@@ -12,6 +12,10 @@ class Public::ReviewsController < ApplicationController
     @review = Review.new(review_params)
     @review.customer_id = current_customer.id
     @review.comic_id = params[:comic_id]
+    if review_params[:body]
+      @review.score = Language.get_data(review_params[:body])
+      @review.magnitude = Language.get_magnitude(review_params[:body])
+    end
     if @review.save
       flash[:notice] = "レビューを投稿しました"
       redirect_to comic_path(@comic)
@@ -40,15 +44,6 @@ class Public::ReviewsController < ApplicationController
     else
       render 'confirm_reported'
     end
-  end
-
-  def edit
-  end
-
-  def index
-  end
-
-  def show
   end
 
   private

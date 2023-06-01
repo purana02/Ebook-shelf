@@ -10,6 +10,9 @@
         <span class="h5"> (全<%= @reviews.count %>件)</span>
       </div>
       <%= render 'admin/reviews/index', reviews: @reviews %>
+      <div class="d-flex justify-content-center mt-3 mb-5">
+        <%= paginate @reviews %>
+      </div>
     </div>
   </div>
 </div>

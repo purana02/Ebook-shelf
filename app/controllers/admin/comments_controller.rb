@@ -1,5 +1,10 @@
 class Admin::CommentsController < ApplicationController
    before_action :authenticate_admin!
+  def index
+    @genres = Genre.all
+    @sites = Site.all
+    @comments = Comment.all.order(created_at: :desc).page(params[:page])
+  end
   def show
     @genres = Genre.all
     @sites = Site.all
