@@ -10,7 +10,7 @@
       </div>
       <div class="text-center mt-3 mb-2">
         <span class="h4 border-bottom border-dark mt-3 mb-2"><strong>通報レビュー一覧</strong></span>
-        <span class="h6"> (全<%= @reporteds.count %>件)</span>
+        <span class="h6"> (全<%= @reporteds_all.count %>件)</span>
       </div>
       <%= render 'admin/reporteds/index', reporteds: @reporteds %>
       <div class="text-center mt-3 mb-5">
@@ -18,7 +18,7 @@
       </div>
       <div class="text-center mt-3 mb-2">
         <span class="h4 border-bottom border-dark mt-3 mb-2"><strong>通報コメント一覧</strong></span>
-        <span class="h6"> (全<%= @reported_comments.count %>件)</span>
+        <span class="h6"> (全<%= @reported_comments_all.count %>件)</span>
       </div>
       <%= render 'admin/reported_comments/index', reported_comments: @reported_comments %>
       <div class="text-center mt-3 mb-5">

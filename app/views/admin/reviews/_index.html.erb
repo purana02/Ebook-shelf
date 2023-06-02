@@ -17,7 +17,15 @@
           <%= review.created_at.strftime('%Y/%m/%d') %>
         <% end %>
       </td>
-      <td><%= review.customer.nickname %></td>
+      <%if review.score <= -0.5 %>
+        <td style="color: #b50909; font-weight: bold;"><%= review.customer.nickname %></td>
+      <% elsif review.score < 0 && review.magnitude >= 0.7 %>
+        <td style="color: #b50909;"><%= review.customer.nickname %></td>
+      <% elsif review.score < 0 %>
+        <td style="color: #e3cd42; font-weight: bold;"><%= review.customer.nickname %></td>
+      <% else %>
+        <td><%= review.customer.nickname %></td>
+      <% end %>
       <td><%= review.comic.title %></td>
       <td><i class="fas fa-star" aria-hidden="true" style="color: #E4BC7F;"></i></i><%= review.evaluation %></td>
       <td>

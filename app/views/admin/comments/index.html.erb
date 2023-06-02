@@ -12,8 +12,8 @@
       <table class='table table-hover table-inverse'>
         <thead>
           <tr>
-            <th>投稿日</th>
-            <th>タイトル</th>
+            <th>　　投稿日　　</th>
+            <th>　　タイトル　　</th>
             <th>レビューID</th>
             <th>コメント投稿者</th>
             <th>ステータス</th>
@@ -23,13 +23,21 @@
           <% @comments.each do |comment| %>
           <tr>
             <td>
-              <%= link_to admin_comment_path(comment_id) do %>
+              <%= link_to admin_comment_path(comment) do %>
                 <%= comment.created_at.strftime('%Y/%m/%d') %>
               <% end %>
             </td>
             <td><%= comment.review.comic.title %></td>
             <td><%= comment.review_id %></td>
-            <td><%= comment.customer.nickname %></td>
+            <%if comment.score <= -0.5 %>
+              <td style="color: #e47f7f; font-weight: bold;"><%= comment.customer.nickname %></td>
+            <% elsif comment.score < 0 && comment.magnitude >= 0.7 %>
+              <td style="color: #7fa1e4; font-weight: bold;"><%= comment.customer.nickname %></td>
+            <% elsif comment.score < 0 %>
+              <td style="color: #7fc2e4; font-weight: bold;"><%= comment.customer.nickname %></td>
+            <% else %>
+              <td><%= comment.customer.nickname %></td>
+            <% end %>
             <td>
               <% if comment.is_publishing == false %>
                 <div class="text-secondary"><%= "非公開" %></div>

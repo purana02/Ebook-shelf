@@ -159,7 +159,7 @@ Review.create!(
 
 Comment.create!(
  [
-  {review_id: 5, customer_id: 8, body: "それな", is_reported: true, is_publishing: false, score: 0.4, magnitude: 0.0},
+  {review_id: 5, customer_id: 3, body: "それな", is_reported: true, is_publishing: false, score: 0.4, magnitude: 0.0},
   {review_id: 4, customer_id: 6, body: "aaaa", is_reported: true, is_publishing: false, score:0.1, magnitude: 0.0},
   {review_id: 6, customer_id: 1, body: "aaaaa", is_reported: false, is_publishing: true,score:0.3, magnitude: 0.0},
   {review_id: 10, customer_id: 2, body: "全て面白い", is_reported: false, is_publishing: true, score: 0.9, magnitude: 0.0},

@@ -4,7 +4,9 @@ class Admin::ReportedsController < ApplicationController
     @genres = Genre.all
     @sites = Site.all
     @reporteds = Reported.all.order(created_at: :desc).page(params[:page])
+    @reporteds_all = Reported.all
     @reported_comments = ReportedComment.all.order(created_at: :desc).page(params[:page])
+    @reported_comments_all = ReportedComment.all
   end
 
   def update
