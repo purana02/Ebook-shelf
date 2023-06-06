@@ -19,7 +19,7 @@
       </td>
       <%if review.score <= -0.5 %>
         <td style="color: #b50909; font-weight: bold;"><%= review.customer.nickname %></td>
-      <% elsif review.score < 0 && review.magnitude >= 0.7 %>
+      <% elsif review.score <= 0 && review.magnitude >= 0.7 %>
         <td style="color: #b50909;"><%= review.customer.nickname %></td>
       <% elsif review.score < 0 %>
         <td style="color: #e3cd42; font-weight: bold;"><%= review.customer.nickname %></td>

@@ -31,7 +31,7 @@
             <td><%= comment.review_id %></td>
             <%if comment.score <= -0.5 %>
               <td style="color: #e47f7f; font-weight: bold;"><%= comment.customer.nickname %></td>
-            <% elsif comment.score < 0 && comment.magnitude >= 0.7 %>
+            <% elsif comment.score <= 0 && comment.magnitude >= 0.7 %>
               <td style="color: #7fa1e4; font-weight: bold;"><%= comment.customer.nickname %></td>
             <% elsif comment.score < 0 %>
               <td style="color: #7fc2e4; font-weight: bold;"><%= comment.customer.nickname %></td>
